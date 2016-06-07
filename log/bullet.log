@@ -1,0 +1,141 @@
+2016-06-07 11:41:21[WARN] user: root
+http://localhost:3000/
+N+1 Query detected
+  Tweet => [:user]
+  Add to your finder: :includes => [:user]
+N+1 Query method call stack
+  /var/ruby/rails_twi/app/views/shared/_feed_item.html.slim:2:in `_app_views_shared__feed_item_html_slim__3711709759441916190_69906663594440'
+  /var/ruby/rails_twi/app/views/shared/_feed.html.slim:3:in `_app_views_shared__feed_html_slim___1292429947164135004_69906663303460'
+  /var/ruby/rails_twi/app/views/static_pages/home.html.slim:11:in `_app_views_static_pages_home_html_slim__3927261088999384119_47242480035920'
+
+/var/ruby/rails_twi/app/views/shared/_feed_item.html.slim:2:in `_app_views_shared__feed_item_html_slim__3711709759441916190_69906663594440'
+/var/ruby/rails_twi/app/views/shared/_feed.html.slim:3:in `_app_views_shared__feed_html_slim___1292429947164135004_69906663303460'
+/var/ruby/rails_twi/app/views/static_pages/home.html.slim:11:in `_app_views_static_pages_home_html_slim__3927261088999384119_47242480035920'2016-06-07 11:41:49[WARN] user: root
+http://localhost:3000/
+N+1 Query detected
+  Tweet => [:user]
+  Add to your finder: :includes => [:user]
+N+1 Query method call stack
+  /var/ruby/rails_twi/app/views/shared/_feed_item.html.slim:2:in `_app_views_shared__feed_item_html_slim__3711709759441916190_69906663594440'
+  /var/ruby/rails_twi/app/views/shared/_feed.html.slim:3:in `_app_views_shared__feed_html_slim___1292429947164135004_69906663303460'
+  /var/ruby/rails_twi/app/views/static_pages/home.html.slim:11:in `_app_views_static_pages_home_html_slim__3927261088999384119_47242480035920'
+
+/var/ruby/rails_twi/app/views/shared/_feed_item.html.slim:2:in `_app_views_shared__feed_item_html_slim__3711709759441916190_69906663594440'
+/var/ruby/rails_twi/app/views/shared/_feed.html.slim:3:in `_app_views_shared__feed_html_slim___1292429947164135004_69906663303460'
+/var/ruby/rails_twi/app/views/static_pages/home.html.slim:11:in `_app_views_static_pages_home_html_slim__3927261088999384119_47242480035920'2016-06-07 11:42:27[WARN] user: root
+http://localhost:3000/
+N+1 Query detected
+  Tweet => [:user]
+  Add to your finder: :includes => [:user]
+N+1 Query method call stack
+  /var/ruby/rails_twi/app/views/shared/_feed_item.html.slim:2:in `_app_views_shared__feed_item_html_slim__3711709759441916190_69906663594440'
+  /var/ruby/rails_twi/app/views/shared/_feed.html.slim:3:in `_app_views_shared__feed_html_slim___1292429947164135004_69906663303460'
+  /var/ruby/rails_twi/app/views/static_pages/home.html.slim:11:in `_app_views_static_pages_home_html_slim__3927261088999384119_47242480035920'
+
+/var/ruby/rails_twi/app/views/shared/_feed_item.html.slim:2:in `_app_views_shared__feed_item_html_slim__3711709759441916190_69906663594440'
+/var/ruby/rails_twi/app/views/shared/_feed.html.slim:3:in `_app_views_shared__feed_html_slim___1292429947164135004_69906663303460'
+/var/ruby/rails_twi/app/views/static_pages/home.html.slim:11:in `_app_views_static_pages_home_html_slim__3927261088999384119_47242480035920'2016-06-07 11:42:44[WARN] user: root
+http://localhost:3000/
+N+1 Query detected
+  Tweet => [:user]
+  Add to your finder: :includes => [:user]
+N+1 Query method call stack
+  /var/ruby/rails_twi/app/views/shared/_feed_item.html.slim:2:in `_app_views_shared__feed_item_html_slim__3711709759441916190_69906663594440'
+  /var/ruby/rails_twi/app/views/shared/_feed.html.slim:3:in `_app_views_shared__feed_html_slim___1292429947164135004_69906663303460'
+  /var/ruby/rails_twi/app/views/static_pages/home.html.slim:11:in `_app_views_static_pages_home_html_slim__3927261088999384119_47242480035920'
+
+/var/ruby/rails_twi/app/views/shared/_feed_item.html.slim:2:in `_app_views_shared__feed_item_html_slim__3711709759441916190_69906663594440'
+/var/ruby/rails_twi/app/views/shared/_feed.html.slim:3:in `_app_views_shared__feed_html_slim___1292429947164135004_69906663303460'
+/var/ruby/rails_twi/app/views/static_pages/home.html.slim:11:in `_app_views_static_pages_home_html_slim__3927261088999384119_47242480035920'2016-06-07 11:53:14[WARN] user: root
+http://localhost:3000/tweets
+N+1 Query detected
+  Tweet => [:user]
+  Add to your finder: :includes => [:user]
+N+1 Query method call stack
+  /var/ruby/rails_twi/app/views/shared/_feed_item.html.slim:2:in `_app_views_shared__feed_item_html_slim__3711709759441916190_69906539049720'
+  /var/ruby/rails_twi/app/views/shared/_feed.html.slim:3:in `_app_views_shared__feed_html_slim___1292429947164135004_69906661485240'
+  /var/ruby/rails_twi/app/views/static_pages/home.html.slim:11:in `_app_views_static_pages_home_html_slim__3927261088999384119_69906661010380'
+  /var/ruby/rails_twi/app/controllers/tweets_controller.rb:9:in `index'
+
+/var/ruby/rails_twi/app/views/shared/_feed_item.html.slim:2:in `_app_views_shared__feed_item_html_slim__3711709759441916190_69906539049720'
+/var/ruby/rails_twi/app/views/shared/_feed.html.slim:3:in `_app_views_shared__feed_html_slim___1292429947164135004_69906661485240'
+/var/ruby/rails_twi/app/views/static_pages/home.html.slim:11:in `_app_views_static_pages_home_html_slim__3927261088999384119_69906661010380'
+/var/ruby/rails_twi/app/controllers/tweets_controller.rb:9:in `index'2016-06-07 11:58:52[WARN] user: root
+http://localhost:3000/tweets
+N+1 Query detected
+  Tweet => [:user]
+  Add to your finder: :includes => [:user]
+N+1 Query method call stack
+  /var/ruby/rails_twi/app/views/shared/_feed_item.html.slim:2:in `_app_views_shared__feed_item_html_slim__3711709759441916190_69906539049720'
+  /var/ruby/rails_twi/app/views/shared/_feed.html.slim:3:in `_app_views_shared__feed_html_slim___1292429947164135004_69906661485240'
+  /var/ruby/rails_twi/app/views/static_pages/home.html.slim:11:in `_app_views_static_pages_home_html_slim__3927261088999384119_69906661010380'
+  /var/ruby/rails_twi/app/controllers/tweets_controller.rb:9:in `index'
+
+/var/ruby/rails_twi/app/views/shared/_feed_item.html.slim:2:in `_app_views_shared__feed_item_html_slim__3711709759441916190_69906539049720'
+/var/ruby/rails_twi/app/views/shared/_feed.html.slim:3:in `_app_views_shared__feed_html_slim___1292429947164135004_69906661485240'
+/var/ruby/rails_twi/app/views/static_pages/home.html.slim:11:in `_app_views_static_pages_home_html_slim__3927261088999384119_69906661010380'
+/var/ruby/rails_twi/app/controllers/tweets_controller.rb:9:in `index'2016-06-07 12:05:51[WARN] user: root
+http://localhost:3000/
+N+1 Query detected
+  Tweet => [:user]
+  Add to your finder: :includes => [:user]
+N+1 Query method call stack
+  /var/ruby/rails_twi/app/views/shared/_feed_item.html.slim:2:in `_app_views_shared__feed_item_html_slim__3711709759441916190_69906539049720'
+  /var/ruby/rails_twi/app/views/shared/_feed.html.slim:3:in `_app_views_shared__feed_html_slim___1292429947164135004_69906661485240'
+  /var/ruby/rails_twi/app/views/static_pages/home.html.slim:11:in `_app_views_static_pages_home_html_slim__3927261088999384119_69906661010380'
+
+/var/ruby/rails_twi/app/views/shared/_feed_item.html.slim:2:in `_app_views_shared__feed_item_html_slim__3711709759441916190_69906539049720'
+/var/ruby/rails_twi/app/views/shared/_feed.html.slim:3:in `_app_views_shared__feed_html_slim___1292429947164135004_69906661485240'
+/var/ruby/rails_twi/app/views/static_pages/home.html.slim:11:in `_app_views_static_pages_home_html_slim__3927261088999384119_69906661010380'2016-06-07 12:06:12[WARN] user: root
+http://localhost:3000/tweets
+N+1 Query detected
+  Tweet => [:user]
+  Add to your finder: :includes => [:user]
+N+1 Query method call stack
+  /var/ruby/rails_twi/app/views/shared/_feed_item.html.slim:2:in `_app_views_shared__feed_item_html_slim__3711709759441916190_69906539049720'
+  /var/ruby/rails_twi/app/views/shared/_feed.html.slim:3:in `_app_views_shared__feed_html_slim___1292429947164135004_69906661485240'
+  /var/ruby/rails_twi/app/views/static_pages/home.html.slim:11:in `_app_views_static_pages_home_html_slim__3927261088999384119_69906661010380'
+  /var/ruby/rails_twi/app/controllers/tweets_controller.rb:9:in `index'
+
+/var/ruby/rails_twi/app/views/shared/_feed_item.html.slim:2:in `_app_views_shared__feed_item_html_slim__3711709759441916190_69906539049720'
+/var/ruby/rails_twi/app/views/shared/_feed.html.slim:3:in `_app_views_shared__feed_html_slim___1292429947164135004_69906661485240'
+/var/ruby/rails_twi/app/views/static_pages/home.html.slim:11:in `_app_views_static_pages_home_html_slim__3927261088999384119_69906661010380'
+/var/ruby/rails_twi/app/controllers/tweets_controller.rb:9:in `index'2016-06-07 12:37:32[WARN] user: root
+http://localhost:3000/
+N+1 Query detected
+  Tweet => [:user]
+  Add to your finder: :includes => [:user]
+N+1 Query method call stack
+  /var/ruby/rails_twi/app/views/shared/_feed_item.html.slim:2:in `_app_views_shared__feed_item_html_slim__3711709759441916190_69906539049720'
+  /var/ruby/rails_twi/app/views/shared/_feed.html.slim:3:in `_app_views_shared__feed_html_slim___1292429947164135004_69906661485240'
+  /var/ruby/rails_twi/app/views/static_pages/home.html.slim:11:in `_app_views_static_pages_home_html_slim__3927261088999384119_69906661010380'
+
+/var/ruby/rails_twi/app/views/shared/_feed_item.html.slim:2:in `_app_views_shared__feed_item_html_slim__3711709759441916190_69906539049720'
+/var/ruby/rails_twi/app/views/shared/_feed.html.slim:3:in `_app_views_shared__feed_html_slim___1292429947164135004_69906661485240'
+/var/ruby/rails_twi/app/views/static_pages/home.html.slim:11:in `_app_views_static_pages_home_html_slim__3927261088999384119_69906661010380'2016-06-07 12:37:37[WARN] user: root
+http://localhost:3000/tweets
+N+1 Query detected
+  Tweet => [:user]
+  Add to your finder: :includes => [:user]
+N+1 Query method call stack
+  /var/ruby/rails_twi/app/views/shared/_feed_item.html.slim:2:in `_app_views_shared__feed_item_html_slim__3711709759441916190_69906539049720'
+  /var/ruby/rails_twi/app/views/shared/_feed.html.slim:3:in `_app_views_shared__feed_html_slim___1292429947164135004_69906661485240'
+  /var/ruby/rails_twi/app/views/static_pages/home.html.slim:11:in `_app_views_static_pages_home_html_slim__3927261088999384119_69906661010380'
+  /var/ruby/rails_twi/app/controllers/tweets_controller.rb:9:in `index'
+
+/var/ruby/rails_twi/app/views/shared/_feed_item.html.slim:2:in `_app_views_shared__feed_item_html_slim__3711709759441916190_69906539049720'
+/var/ruby/rails_twi/app/views/shared/_feed.html.slim:3:in `_app_views_shared__feed_html_slim___1292429947164135004_69906661485240'
+/var/ruby/rails_twi/app/views/static_pages/home.html.slim:11:in `_app_views_static_pages_home_html_slim__3927261088999384119_69906661010380'
+/var/ruby/rails_twi/app/controllers/tweets_controller.rb:9:in `index'2016-06-07 12:37:39[WARN] user: root
+http://localhost:3000/
+N+1 Query detected
+  Tweet => [:user]
+  Add to your finder: :includes => [:user]
+N+1 Query method call stack
+  /var/ruby/rails_twi/app/views/shared/_feed_item.html.slim:2:in `_app_views_shared__feed_item_html_slim__3711709759441916190_69906539049720'
+  /var/ruby/rails_twi/app/views/shared/_feed.html.slim:3:in `_app_views_shared__feed_html_slim___1292429947164135004_69906661485240'
+  /var/ruby/rails_twi/app/views/static_pages/home.html.slim:11:in `_app_views_static_pages_home_html_slim__3927261088999384119_69906661010380'
+
+/var/ruby/rails_twi/app/views/shared/_feed_item.html.slim:2:in `_app_views_shared__feed_item_html_slim__3711709759441916190_69906539049720'
+/var/ruby/rails_twi/app/views/shared/_feed.html.slim:3:in `_app_views_shared__feed_html_slim___1292429947164135004_69906661485240'
+/var/ruby/rails_twi/app/views/static_pages/home.html.slim:11:in `_app_views_static_pages_home_html_slim__3927261088999384119_69906661010380'

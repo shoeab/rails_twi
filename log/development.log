@@ -1,0 +1,1605 @@
+
+
+Started GET "/" for 127.0.0.1 at 2016-06-07 11:19:21 +0600
+
+ActiveRecord::PendingMigrationError - 
+
+Migrations are pending. To resolve this issue, run:
+
+	bin/rake db:migrate RAILS_ENV=development
+
+:
+  activerecord (4.2.6) lib/active_record/migration.rb:392:in `check_pending!'
+  activerecord (4.2.6) lib/active_record/migration.rb:373:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:88:in `__run_callbacks__'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:778:in `_run_call_callbacks'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.6) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.6) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `call'
+  quiet_assets (1.1.0) lib/quiet_assets.rb:27:in `call_with_quiet_assets'
+  actionpack (4.2.6) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.6) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.6) lib/rails/engine.rb:518:in `call'
+  railties (4.2.6) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /root/.rbenv/versions/2.2.5/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /root/.rbenv/versions/2.2.5/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /root/.rbenv/versions/2.2.5/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+
+Started POST "/__better_errors/d79124e7f35def50/variables" for 127.0.0.1 at 2016-06-07 11:19:21 +0600
+  [1m[36m (79.5ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+  [1m[35m (57.0ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateUsers (20140307124026)
+  [1m[35m (0.1ms)[0m  BEGIN
+DEPRECATION WARNING: `#timestamps` was called without specifying an option for `null`. In Rails 5, this behavior will change to `null: false`. You should manually specify `null: true` to prevent the behavior of your existing migrations from changing. (called from block in change at /var/ruby/rails_twi/db/migrate/20140307124026_create_users.rb:8)
+  [1m[36m (74.3ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "name" character varying, "email" character varying, "password" character varying, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140307124026"]]
+  [1m[36m (54.2ms)[0m  [1mCOMMIT[0m
+Migrating to AddIndexToUsersEmail (20140315090930)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (98.9ms)[0m  [1mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140315090930"]]
+  [1m[36m (10.9ms)[0m  [1mCOMMIT[0m
+Migrating to RenamePassword (20140315103002)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "users" RENAME COLUMN "password" TO "password_digest"[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140315103002"]]
+  [1m[36m (3.4ms)[0m  [1mCOMMIT[0m
+Migrating to AddRememberTokenToUsers (20140317214823)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "users" ADD "remember_token" character varying[0m
+  [1m[35m (42.6ms)[0m  CREATE  INDEX  "index_users_on_remember_token" ON "users"  ("remember_token")
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20140317214823"]]
+  [1m[35m (20.6ms)[0m  COMMIT
+Migrating to CreateMicroposts (20140319034048)
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+DEPRECATION WARNING: `#timestamps` was called without specifying an option for `null`. In Rails 5, this behavior will change to `null: false`. You should manually specify `null: true` to prevent the behavior of your existing migrations from changing. (called from block in change at /var/ruby/rails_twi/db/migrate/20140319034048_create_microposts.rb:7)
+  [1m[35m (69.2ms)[0m  CREATE TABLE "microposts" ("id" serial primary key, "content" character varying, "user_id" integer, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (23.7ms)[0m  [1mCREATE  INDEX  "index_microposts_on_user_id_and_created_at" ON "microposts"  ("user_id", "created_at")[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140319034048"]]
+  [1m[36m (11.8ms)[0m  [1mCOMMIT[0m
+Migrating to CreateRelationships (20140323031217)
+  [1m[35m (0.2ms)[0m  BEGIN
+DEPRECATION WARNING: `#timestamps` was called without specifying an option for `null`. In Rails 5, this behavior will change to `null: false`. You should manually specify `null: true` to prevent the behavior of your existing migrations from changing. (called from block in change at /var/ruby/rails_twi/db/migrate/20140323031217_create_relationships.rb:7)
+  [1m[36m (44.5ms)[0m  [1mCREATE TABLE "relationships" ("id" serial primary key, "follower_id" integer, "followed_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (24.0ms)[0m  CREATE  INDEX  "index_relationships_on_follower_id" ON "relationships"  ("follower_id")
+  [1m[36m (48.8ms)[0m  [1mCREATE  INDEX  "index_relationships_on_followed_id" ON "relationships"  ("followed_id")[0m
+  [1m[35m (23.7ms)[0m  CREATE UNIQUE INDEX  "index_relationships_on_follower_id_and_followed_id" ON "relationships"  ("follower_id", "followed_id")
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20140323031217"]]
+  [1m[35m (11.0ms)[0m  COMMIT
+Migrating to RenameMicropostsTable (20140326232214)
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "microposts" RENAME TO "tweets"
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "public"."microposts_id_seq" RENAME TO "tweets_id_seq"[0m
+  [1m[35m (0.2ms)[0m  ALTER INDEX "microposts_pkey" RENAME TO "tweets_pkey"
+  [1m[36m (0.1ms)[0m  [1mALTER INDEX "index_microposts_on_user_id_and_created_at" RENAME TO "index_tweets_on_user_id_and_created_at"[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140326232214"]]
+  [1m[36m (2.8ms)[0m  [1mCOMMIT[0m
+Migrating to AddSlugToUsers (20140725142845)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mALTER TABLE "users" ADD "slug" character varying[0m
+  [1m[35m (36.4ms)[0m  CREATE UNIQUE INDEX  "index_users_on_slug" ON "users"  ("slug")
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20140725142845"]]
+  [1m[35m (10.2ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (2.1ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'relationships'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (1.5ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'tweets'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.5ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+
+
+Started GET "/" for 127.0.0.1 at 2016-06-07 11:27:55 +0600
+
+ActiveRecord::PendingMigrationError - 
+
+Migrations are pending. To resolve this issue, run:
+
+	bin/rake db:migrate RAILS_ENV=development
+
+:
+  activerecord (4.2.6) lib/active_record/migration.rb:392:in `check_pending!'
+  activerecord (4.2.6) lib/active_record/migration.rb:373:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:88:in `__run_callbacks__'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:778:in `_run_call_callbacks'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.6) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.6) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `call'
+  quiet_assets (1.1.0) lib/quiet_assets.rb:27:in `call_with_quiet_assets'
+  actionpack (4.2.6) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.6) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.6) lib/rails/engine.rb:518:in `call'
+  railties (4.2.6) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /root/.rbenv/versions/2.2.5/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /root/.rbenv/versions/2.2.5/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /root/.rbenv/versions/2.2.5/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+
+Started POST "/__better_errors/d314e19484da6b49/variables" for 127.0.0.1 at 2016-06-07 11:27:55 +0600
+
+
+Started GET "/" for 127.0.0.1 at 2016-06-07 11:27:57 +0600
+
+ActiveRecord::PendingMigrationError - 
+
+Migrations are pending. To resolve this issue, run:
+
+	bin/rake db:migrate RAILS_ENV=development
+
+:
+  activerecord (4.2.6) lib/active_record/migration.rb:392:in `check_pending!'
+  activerecord (4.2.6) lib/active_record/migration.rb:373:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:88:in `__run_callbacks__'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:778:in `_run_call_callbacks'
+  activesupport (4.2.6) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.6) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.6) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.6) lib/rails/rack/logger.rb:20:in `call'
+  quiet_assets (1.1.0) lib/quiet_assets.rb:27:in `call_with_quiet_assets'
+  actionpack (4.2.6) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.6) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.6) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.6) lib/rails/engine.rb:518:in `call'
+  railties (4.2.6) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /root/.rbenv/versions/2.2.5/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /root/.rbenv/versions/2.2.5/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /root/.rbenv/versions/2.2.5/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+
+Started POST "/__better_errors/665cf6f30584ecdb/variables" for 127.0.0.1 at 2016-06-07 11:27:57 +0600
+
+
+Started GET "/" for 127.0.0.1 at 2016-06-07 11:28:10 +0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by StaticPagesController#home as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1[0m  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"]]
+  Rendered static_pages/home.html.slim within layouts/application (8.4ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"]]
+  Rendered layouts/_header.html.slim (5.3ms)
+  Rendered layouts/_footer.html.slim (1.6ms)
+Completed 200 OK in 3192ms (Views: 3151.7ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/signin" for 127.0.0.1 at 2016-06-07 11:28:16 +0600
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.slim within layouts/application (205.3ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1[0m  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"]]
+  Rendered layouts/_header.html.slim (5.2ms)
+  Rendered layouts/_footer.html.slim (1.5ms)
+Completed 200 OK in 228ms (Views: 227.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2016-06-07 11:28:20 +0600
+Processing by UsersController#new as HTML
+  Rendered shared/_error_messages.html.slim (3.2ms)
+  Rendered users/new.html.slim within layouts/application (8.9ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"]]
+  Rendered layouts/_header.html.slim (1.0ms)
+  Rendered layouts/_footer.html.slim (0.1ms)
+Completed 200 OK in 30ms (Views: 25.3ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-06-07 11:28:41 +0600
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"vXqE97i/XKt+EyPmp7QOZ7Wd4yBK6MYQUw8bcOhbP1nQDapn6KyTBXVf9CncVHApC0wNnggbSPyuTcv/FD8DkQ==", "user"=>{"slug"=>"shoeab", "name"=>"Shoeab Ahmed", "email"=>"shoeabahmed4@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('shoeabahmed4@gmail.com') LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."slug" = 'shoeab' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  Rendered shared/_error_messages.html.slim (2.4ms)
+  Rendered users/new.html.slim within layouts/application (7.8ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1[0m  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"]]
+  Rendered layouts/_header.html.slim (1.0ms)
+  Rendered layouts/_footer.html.slim (0.1ms)
+Completed 200 OK in 139ms (Views: 38.1ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-06-07 11:28:50 +0600
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"0LoWM3kdtRmAFr+f9weU1z3zq6eQSoZotPqkzz5ekZm9zTijKQ56t4taaFCM5+qZgyJFGdK5CIRJuHRAwjqtUQ==", "user"=>{"slug"=>"shoeab", "name"=>"Shoeab Ahmed", "email"=>"shoeabahmed4@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('shoeabahmed4@gmail.com') LIMIT 1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."slug" = 'shoeab' LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("name", "email", "password_digest", "slug", "created_at", "updated_at", "remember_token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Shoeab Ahmed"], ["email", "shoeabahmed4@gmail.com"], ["password_digest", "$2a$10$XN3df8Dvy5f1hu9ZEGi6NOmoL2Z7pSQlfu6Jzo6EkV64B.POQ7edW"], ["slug", "shoeab"], ["created_at", "2016-06-07 05:28:50.447883"], ["updated_at", "2016-06-07 05:28:50.447883"], ["remember_token", "276dc61aa18afb8d4f64204689bd5cc54cdc4e49"]]
+  [1m[35m (10.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "users" SET "remember_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3  [["remember_token", "11f43a754ffbc5f2c131821504799c97e85aee84"], ["updated_at", "2016-06-07 05:28:50.461044"], ["id", 1]]
+  [1m[36m (5.4ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/users/shoeab
+Completed 302 Found in 81ms (ActiveRecord: 17.1ms)
+
+
+Started GET "/users/shoeab" for 127.0.0.1 at 2016-06-07 11:28:50 +0600
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"shoeab"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."slug" = $1 LIMIT 1  [["slug", "shoeab"]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1[0m  [["remember_token", "11f43a754ffbc5f2c131821504799c97e85aee84"]]
+  Rendered shared/_follow_form.html.slim (1.4ms)
+  Rendered shared/_profile.html.slim (3.6ms)
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "tweets" WHERE "tweets"."user_id" = $1  [["user_id", 1]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = $1[0m  [["follower_id", 1]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = $1  [["followed_id", 1]]
+  Rendered shared/_stats.html.slim (14.2ms)
+  Rendered shared/_error_messages.html.slim (0.1ms)
+  Rendered shared/_tweet_form.html.slim (4.7ms)
+  [1m[36mTweet Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "tweets" WHERE "tweets"."user_id" = $1 LIMIT 1[0m  [["user_id", 1]]
+  Rendered users/show.html.slim within layouts/application (28.6ms)
+  Rendered layouts/_header.html.slim (0.4ms)
+  Rendered layouts/_footer.html.slim (0.1ms)
+Completed 200 OK in 56ms (Views: 41.2ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2016-06-07 11:28:58 +0600
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users"
+  Rendered users/index.html.slim within layouts/application (2.8ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1[0m  [["remember_token", "11f43a754ffbc5f2c131821504799c97e85aee84"]]
+  Rendered layouts/_header.html.slim (1.0ms)
+  Rendered layouts/_footer.html.slim (0.1ms)
+Completed 200 OK in 18ms (Views: 17.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/shoeab" for 127.0.0.1 at 2016-06-07 11:29:00 +0600
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"shoeab"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."slug" = $1 LIMIT 1  [["slug", "shoeab"]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1[0m  [["remember_token", "11f43a754ffbc5f2c131821504799c97e85aee84"]]
+  Rendered shared/_follow_form.html.slim (1.6ms)
+  Rendered shared/_profile.html.slim (4.4ms)
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "tweets" WHERE "tweets"."user_id" = $1  [["user_id", 1]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = $1[0m  [["follower_id", 1]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = $1  [["followed_id", 1]]
+  Rendered shared/_stats.html.slim (4.7ms)
+  Rendered shared/_error_messages.html.slim (0.0ms)
+  Rendered shared/_tweet_form.html.slim (2.4ms)
+  [1m[36mTweet Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "tweets" WHERE "tweets"."user_id" = $1 LIMIT 1[0m  [["user_id", 1]]
+  Rendered users/show.html.slim within layouts/application (16.3ms)
+  Rendered layouts/_header.html.slim (0.5ms)
+  Rendered layouts/_footer.html.slim (0.0ms)
+Completed 200 OK in 33ms (Views: 29.5ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/tweets" for 127.0.0.1 at 2016-06-07 11:29:05 +0600
+Processing by TweetsController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1  [["remember_token", "11f43a754ffbc5f2c131821504799c97e85aee84"]]
+  Rendered shared/_follow_form.html.slim (0.0ms)
+  Rendered shared/_profile.html.slim (0.6ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "tweets" WHERE "tweets"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = $1  [["follower_id", 1]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = $1[0m  [["followed_id", 1]]
+  Rendered shared/_stats.html.slim (3.3ms)
+  Rendered shared/_error_messages.html.slim (0.0ms)
+  Rendered shared/_tweet_form.html.slim (0.8ms)
+  Rendered shared/_user_info.html.slim (7.3ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "tweets"
+  Rendered shared/_feed.html.slim (2.6ms)
+  Rendered static_pages/home.html.slim within layouts/application (13.0ms)
+  Rendered layouts/_header.html.slim (0.5ms)
+  Rendered layouts/_footer.html.slim (0.1ms)
+Completed 200 OK in 32ms (Views: 28.9ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/tweets" for 127.0.0.1 at 2016-06-07 11:29:16 +0600
+Processing by TweetsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8oKmG6bDxYvKxjSVVw1m9mD3s7+MyGTP3tMETaX2D6Of9YiL9tAKJcGK41os7Ri43iZdAc476iMjkdTCWZIzaw==", "tweet"=>{"content"=>"Happy Birthday to me :p"}, "commit"=>"Post"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1[0m  [["remember_token", "11f43a754ffbc5f2c131821504799c97e85aee84"]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "tweets" ("content", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "Happy Birthday to me :p"], ["user_id", 1], ["created_at", "2016-06-07 05:29:16.767818"], ["updated_at", "2016-06-07 05:29:16.767818"]]
+  [1m[35m (14.5ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 20ms (ActiveRecord: 15.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-06-07 11:29:16 +0600
+Processing by StaticPagesController#home as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1[0m  [["remember_token", "11f43a754ffbc5f2c131821504799c97e85aee84"]]
+  Rendered shared/_follow_form.html.slim (0.0ms)
+  Rendered shared/_profile.html.slim (0.6ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "tweets" WHERE "tweets"."user_id" = $1  [["user_id", 1]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = $1[0m  [["follower_id", 1]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = $1  [["followed_id", 1]]
+  Rendered shared/_stats.html.slim (3.2ms)
+  Rendered shared/_error_messages.html.slim (0.0ms)
+  Rendered shared/_tweet_form.html.slim (1.4ms)
+  Rendered shared/_user_info.html.slim (7.7ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "tweets" WHERE ("tweets"."user_id" IN (SELECT "relationships"."followed_id" FROM "relationships" WHERE "relationships"."follower_id" = 1) OR "tweets"."user_id" = 1)[0m
+  [1m[35mTweet Load (0.4ms)[0m  SELECT  "tweets".* FROM "tweets" WHERE ("tweets"."user_id" IN (SELECT "relationships"."followed_id" FROM "relationships" WHERE "relationships"."follower_id" = 1) OR "tweets"."user_id" = 1)  ORDER BY "tweets"."created_at" DESC LIMIT 30 OFFSET 0
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered shared/_feed_item.html.slim (46.6ms)
+  Rendered shared/_feed.html.slim (52.2ms)
+  Rendered static_pages/home.html.slim within layouts/application (60.6ms)
+  Rendered layouts/_header.html.slim (0.4ms)
+  Rendered layouts/_footer.html.slim (0.1ms)
+Completed 200 OK in 78ms (Views: 74.2ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/users/shoeab/edit" for 127.0.0.1 at 2016-06-07 11:29:20 +0600
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"shoeab"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."slug" = $1 LIMIT 1  [["slug", "shoeab"]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1[0m  [["remember_token", "11f43a754ffbc5f2c131821504799c97e85aee84"]]
+  Rendered shared/_error_messages.html.slim (0.0ms)
+  Rendered users/edit.html.slim within layouts/application (5.2ms)
+  Rendered layouts/_header.html.slim (0.4ms)
+  Rendered layouts/_footer.html.slim (0.0ms)
+Completed 200 OK in 20ms (Views: 18.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2016-06-07 11:29:27 +0600
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users"
+  Rendered users/index.html.slim within layouts/application (0.8ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1[0m  [["remember_token", "11f43a754ffbc5f2c131821504799c97e85aee84"]]
+  Rendered layouts/_header.html.slim (1.0ms)
+  Rendered layouts/_footer.html.slim (0.0ms)
+Completed 200 OK in 17ms (Views: 15.8ms | ActiveRecord: 0.4ms)
+
+
+Started DELETE "/signout" for 127.0.0.1 at 2016-06-07 11:29:30 +0600
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"V+A7JG5K00nX0c7CKesgOwWoUvVvQiqsAfVBgeNL++Y6lxW0Plkc59ydGQ1SC151u3m8Sy2xpED8t5EOHy/HLg=="}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1  [["remember_token", "11f43a754ffbc5f2c131821504799c97e85aee84"]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  UPDATE "users" SET "remember_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3  [["remember_token", "f4259095b2a250d09a53282ab0b6843a651e3fe0"], ["updated_at", "2016-06-07 05:29:30.264867"], ["id", 1]]
+  [1m[36m (9.6ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 13ms (ActiveRecord: 10.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-06-07 11:29:30 +0600
+Processing by StaticPagesController#home as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1[0m  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"]]
+  Rendered static_pages/home.html.slim within layouts/application (0.4ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"]]
+  Rendered layouts/_header.html.slim (0.5ms)
+  Rendered layouts/_footer.html.slim (0.1ms)
+Completed 200 OK in 15ms (Views: 14.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/signin" for 127.0.0.1 at 2016-06-07 11:29:31 +0600
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.slim within layouts/application (0.6ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1[0m  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"]]
+  Rendered layouts/_header.html.slim (0.7ms)
+  Rendered layouts/_footer.html.slim (0.1ms)
+Completed 200 OK in 16ms (Views: 15.0ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2016-06-07 11:29:42 +0600
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"D0dao0nfeQEDHohA3a0MdsQAbrMuhqGoRAbXgY7ngQxiMHQzGcy2rwhSX4+mTXI4etGADWx1L0S5RAcOcoO9xA==", "session"=>{"email"=>"shoeabahmed4@gmail.com", "password"=>"[FILTERED]"}, "commit"=>"Sign in"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1  [["email", "shoeabahmed4@gmail.com"]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "users" SET "remember_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3  [["remember_token", "227c9cfbf361819348a26e70ce56323b8c8ef179"], ["updated_at", "2016-06-07 05:29:42.978534"], ["id", 1]]
+  [1m[36m (20.4ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 84ms (ActiveRecord: 21.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-06-07 11:29:43 +0600
+Processing by StaticPagesController#home as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1  [["remember_token", "227c9cfbf361819348a26e70ce56323b8c8ef179"]]
+  Rendered shared/_follow_form.html.slim (0.0ms)
+  Rendered shared/_profile.html.slim (0.8ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "tweets" WHERE "tweets"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = $1  [["follower_id", 1]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = $1[0m  [["followed_id", 1]]
+  Rendered shared/_stats.html.slim (4.5ms)
+  Rendered shared/_error_messages.html.slim (0.0ms)
+  Rendered shared/_tweet_form.html.slim (1.2ms)
+  Rendered shared/_user_info.html.slim (7.6ms)
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM "tweets" WHERE ("tweets"."user_id" IN (SELECT "relationships"."followed_id" FROM "relationships" WHERE "relationships"."follower_id" = 1) OR "tweets"."user_id" = 1)
+  [1m[36mTweet Load (0.3ms)[0m  [1mSELECT  "tweets".* FROM "tweets" WHERE ("tweets"."user_id" IN (SELECT "relationships"."followed_id" FROM "relationships" WHERE "relationships"."follower_id" = 1) OR "tweets"."user_id" = 1)  ORDER BY "tweets"."created_at" DESC LIMIT 30 OFFSET 0[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered shared/_feed_item.html.slim (2.3ms)
+  Rendered shared/_feed.html.slim (5.1ms)
+  Rendered static_pages/home.html.slim within layouts/application (13.4ms)
+  Rendered layouts/_header.html.slim (0.5ms)
+  Rendered layouts/_footer.html.slim (0.1ms)
+Completed 200 OK in 31ms (Views: 26.8ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/users/shoeab/edit" for 127.0.0.1 at 2016-06-07 11:29:45 +0600
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"shoeab"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."slug" = $1 LIMIT 1[0m  [["slug", "shoeab"]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1  [["remember_token", "227c9cfbf361819348a26e70ce56323b8c8ef179"]]
+  Rendered shared/_error_messages.html.slim (0.0ms)
+  Rendered users/edit.html.slim within layouts/application (1.7ms)
+  Rendered layouts/_header.html.slim (0.4ms)
+  Rendered layouts/_footer.html.slim (0.1ms)
+Completed 200 OK in 17ms (Views: 15.5ms | ActiveRecord: 0.4ms)
+
+
+Started PATCH "/users/shoeab" for 127.0.0.1 at 2016-06-07 11:29:53 +0600
+Processing by UsersController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"uc5usM53hOlGQv0itjNgHmSdzG0BVx3ncqyBq9Z4sNXUuUAgnmRLR00OKu3N0x5Q2kwi00OkkwuP7lEkKhyMHQ==", "user"=>{"name"=>"Shoeab Ahmed", "email"=>"shoeab@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Save changes", "id"=>"shoeab"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."slug" = $1 LIMIT 1[0m  [["slug", "shoeab"]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1  [["remember_token", "227c9cfbf361819348a26e70ce56323b8c8ef179"]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE (LOWER("users"."email") = LOWER('shoeab@gmail.com') AND "users"."id" != 1) LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE ("users"."slug" = 'shoeab' AND "users"."id" != 1) LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  Rendered shared/_error_messages.html.slim (0.2ms)
+  Rendered users/edit.html.slim within layouts/application (5.4ms)
+  Rendered layouts/_header.html.slim (0.4ms)
+  Rendered layouts/_footer.html.slim (0.1ms)
+Completed 200 OK in 24ms (Views: 19.8ms | ActiveRecord: 0.8ms)
+
+
+Started PATCH "/users/shoeab" for 127.0.0.1 at 2016-06-07 11:30:00 +0600
+Processing by UsersController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"4VqHcWjRzA6BhmNWuBWGHSn7KlKjxpNhQ7dPAlhPeOCMLanhOMIDoIrKtJnD9fhTlyrE7OE1HY2+9Z+NpCtEKA==", "user"=>{"name"=>"Shoeab Ahmed", "email"=>"shoeab@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Save changes", "id"=>"shoeab"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."slug" = $1 LIMIT 1[0m  [["slug", "shoeab"]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1  [["remember_token", "227c9cfbf361819348a26e70ce56323b8c8ef179"]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE (LOWER("users"."email") = LOWER('shoeab@gmail.com') AND "users"."id" != 1) LIMIT 1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE ("users"."slug" = 'shoeab' AND "users"."id" != 1) LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  UPDATE "users" SET "email" = $1, "password_digest" = $2, "updated_at" = $3 WHERE "users"."id" = $4  [["email", "shoeab@gmail.com"], ["password_digest", "$2a$10$VtchC0P.7/fWQ.O9nJXbguGwILZuMNOcss3zdPeLij2t9k82sCUti"], ["updated_at", "2016-06-07 05:30:00.802360"], ["id", 1]]
+  [1m[36m (13.2ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/users/shoeab
+Completed 302 Found in 77ms (ActiveRecord: 14.4ms)
+
+
+Started GET "/users/shoeab" for 127.0.0.1 at 2016-06-07 11:30:00 +0600
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"shoeab"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."slug" = $1 LIMIT 1  [["slug", "shoeab"]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1[0m  [["remember_token", "227c9cfbf361819348a26e70ce56323b8c8ef179"]]
+  Rendered shared/_follow_form.html.slim (0.0ms)
+  Rendered shared/_profile.html.slim (0.7ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "tweets" WHERE "tweets"."user_id" = $1  [["user_id", 1]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = $1[0m  [["follower_id", 1]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = $1  [["followed_id", 1]]
+  Rendered shared/_stats.html.slim (3.1ms)
+  Rendered shared/_error_messages.html.slim (0.0ms)
+  Rendered shared/_tweet_form.html.slim (0.7ms)
+  [1m[36mTweet Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "tweets" WHERE "tweets"."user_id" = $1 LIMIT 1[0m  [["user_id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "tweets" WHERE "tweets"."user_id" = $1  [["user_id", 1]]
+  [1m[36mTweet Load (0.1ms)[0m  [1mSELECT  "tweets".* FROM "tweets" WHERE "tweets"."user_id" = $1  ORDER BY "tweets"."created_at" DESC LIMIT 30 OFFSET 0[0m  [["user_id", 1]]
+  Rendered shared/_feed_item.html.slim (0.9ms)
+  Rendered shared/_feed.html.slim (2.4ms)
+  Rendered users/show.html.slim within layouts/application (8.8ms)
+  Rendered layouts/_header.html.slim (0.4ms)
+  Rendered layouts/_footer.html.slim (0.1ms)
+Completed 200 OK in 35ms (Views: 31.6ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2016-06-07 11:30:03 +0600
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users"
+  Rendered users/index.html.slim within layouts/application (0.8ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1[0m  [["remember_token", "227c9cfbf361819348a26e70ce56323b8c8ef179"]]
+  Rendered layouts/_header.html.slim (1.0ms)
+  Rendered layouts/_footer.html.slim (0.0ms)
+Completed 200 OK in 17ms (Views: 16.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/shoeab" for 127.0.0.1 at 2016-06-07 11:30:05 +0600
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"shoeab"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."slug" = $1 LIMIT 1  [["slug", "shoeab"]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1[0m  [["remember_token", "227c9cfbf361819348a26e70ce56323b8c8ef179"]]
+  Rendered shared/_follow_form.html.slim (0.1ms)
+  Rendered shared/_profile.html.slim (1.7ms)
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "tweets" WHERE "tweets"."user_id" = $1  [["user_id", 1]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = $1[0m  [["follower_id", 1]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = $1  [["followed_id", 1]]
+  Rendered shared/_stats.html.slim (6.3ms)
+  Rendered shared/_error_messages.html.slim (0.1ms)
+  Rendered shared/_tweet_form.html.slim (1.8ms)
+  [1m[36mTweet Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "tweets" WHERE "tweets"."user_id" = $1 LIMIT 1[0m  [["user_id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "tweets" WHERE "tweets"."user_id" = $1  [["user_id", 1]]
+  [1m[36mTweet Load (0.4ms)[0m  [1mSELECT  "tweets".* FROM "tweets" WHERE "tweets"."user_id" = $1  ORDER BY "tweets"."created_at" DESC LIMIT 30 OFFSET 0[0m  [["user_id", 1]]
+  Rendered shared/_feed_item.html.slim (7.2ms)
+  Rendered shared/_feed.html.slim (10.3ms)
+  Rendered users/show.html.slim within layouts/application (26.0ms)
+  Rendered layouts/_header.html.slim (0.8ms)
+  Rendered layouts/_footer.html.slim (0.2ms)
+Completed 200 OK in 65ms (Views: 55.6ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-06-07 11:32:29 +0600
+Processing by StaticPagesController#home as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1[0m  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"]]
+  Rendered static_pages/home.html.slim within layouts/application (0.4ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"]]
+  Rendered layouts/_header.html.slim (0.3ms)
+  Rendered layouts/_footer.html.slim (0.1ms)
+Completed 200 OK in 19ms (Views: 18.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2016-06-07 11:32:31 +0600
+Processing by UsersController#new as HTML
+  Rendered shared/_error_messages.html.slim (0.0ms)
+  Rendered users/new.html.slim within layouts/application (2.0ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1[0m  [["remember_token", "da39a3ee5e6b4b0d3255bfef95601890afd80709"]]
+  Rendered layouts/_header.html.slim (0.9ms)
+  Rendered layouts/_footer.html.slim (0.0ms)
+Completed 200 OK in 20ms (Views: 18.8ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-06-07 11:32:59 +0600
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"bFWw9m3MLc2bPfZmx7WqQrT8f3VzeshM5LNakHHWaSYAp5GjGXTLmr1MzidxESiLFlnxM4CYIKqsNwhG+rM4fw==", "user"=>{"slug"=>"Jack", "name"=>"Jack Shaw", "email"=>"jshaw@jmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('jshaw@jmail.com') LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."slug" = 'Jack' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("name", "email", "password_digest", "slug", "created_at", "updated_at", "remember_token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Jack Shaw"], ["email", "jshaw@jmail.com"], ["password_digest", "$2a$10$xhWZu4lekD10aHZaleZYruHJofctZbaHYlVQD1.YVmIhw.D7n.E6G"], ["slug", "Jack"], ["created_at", "2016-06-07 05:32:59.662039"], ["updated_at", "2016-06-07 05:32:59.662039"], ["remember_token", "96c574536df05b18e14a7c5c7abba2a901176622"]]
+  [1m[35m (15.9ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "users" SET "remember_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3  [["remember_token", "17c6001986cc48d264f13ec4092c39d230d26d74"], ["updated_at", "2016-06-07 05:32:59.679783"], ["id", 2]]
+  [1m[36m (6.6ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/users/Jack
+Completed 302 Found in 86ms (ActiveRecord: 23.5ms)
+
+
+Started GET "/users/Jack" for 127.0.0.1 at 2016-06-07 11:32:59 +0600
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"Jack"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."slug" = $1 LIMIT 1  [["slug", "Jack"]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1[0m  [["remember_token", "17c6001986cc48d264f13ec4092c39d230d26d74"]]
+  Rendered shared/_follow_form.html.slim (0.1ms)
+  Rendered shared/_profile.html.slim (0.6ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "tweets" WHERE "tweets"."user_id" = $1  [["user_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = $1[0m  [["follower_id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = $1  [["followed_id", 2]]
+  Rendered shared/_stats.html.slim (2.5ms)
+  Rendered shared/_error_messages.html.slim (0.1ms)
+  Rendered shared/_tweet_form.html.slim (0.7ms)
+  [1m[36mTweet Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "tweets" WHERE "tweets"."user_id" = $1 LIMIT 1[0m  [["user_id", 2]]
+  Rendered users/show.html.slim within layouts/application (5.9ms)
+  Rendered layouts/_header.html.slim (0.7ms)
+  Rendered layouts/_footer.html.slim (0.1ms)
+Completed 200 OK in 29ms (Views: 24.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2016-06-07 11:33:01 +0600
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users"
+  Rendered users/index.html.slim within layouts/application (2.5ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1[0m  [["remember_token", "17c6001986cc48d264f13ec4092c39d230d26d74"]]
+  Rendered layouts/_header.html.slim (0.9ms)
+  Rendered layouts/_footer.html.slim (0.1ms)
+Completed 200 OK in 19ms (Views: 18.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/shoeab" for 127.0.0.1 at 2016-06-07 11:33:03 +0600
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"shoeab"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."slug" = $1 LIMIT 1  [["slug", "shoeab"]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1[0m  [["remember_token", "17c6001986cc48d264f13ec4092c39d230d26d74"]]
+  [1m[35mRelationship Load (0.2ms)[0m  SELECT  "relationships".* FROM "relationships" WHERE "relationships"."follower_id" = $1 AND "relationships"."followed_id" = $2 LIMIT 1  [["follower_id", 2], ["followed_id", 1]]
+  Rendered shared/_follow.html.slim (14.6ms)
+  Rendered shared/_follow_form.html.slim (16.0ms)
+  Rendered shared/_profile.html.slim (16.9ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "tweets" WHERE "tweets"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = $1  [["follower_id", 1]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = $1[0m  [["followed_id", 1]]
+  Rendered shared/_stats.html.slim (3.2ms)
+  [1m[35mTweet Exists (0.2ms)[0m  SELECT  1 AS one FROM "tweets" WHERE "tweets"."user_id" = $1 LIMIT 1  [["user_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "tweets" WHERE "tweets"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35mTweet Load (0.2ms)[0m  SELECT  "tweets".* FROM "tweets" WHERE "tweets"."user_id" = $1  ORDER BY "tweets"."created_at" DESC LIMIT 30 OFFSET 0  [["user_id", 1]]
+  Rendered shared/_feed_item.html.slim (1.1ms)
+  Rendered shared/_feed.html.slim (2.8ms)
+  Rendered users/show.html.slim within layouts/application (24.8ms)
+  Rendered layouts/_header.html.slim (0.6ms)
+  Rendered layouts/_footer.html.slim (0.1ms)
+Completed 200 OK in 44ms (Views: 40.7ms | ActiveRecord: 1.7ms)
+
+
+Started POST "/relationships" for 127.0.0.1 at 2016-06-07 11:33:05 +0600
+Processing by RelationshipsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"yuk0FIeNqbFVdOQecPK0vXjHdYf3UNCl9gGDklHzEFOmGxVB8zVP5nMF3F/GVjZ02mL7wQSyOEO+hdFE2pZBCg==", "relationship"=>{"followed_id"=>"1"}, "commit"=>"Follow"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1[0m  [["remember_token", "17c6001986cc48d264f13ec4092c39d230d26d74"]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "relationships" ("followed_id", "follower_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["followed_id", 1], ["follower_id", 2], ["created_at", "2016-06-07 05:33:05.563277"], ["updated_at", "2016-06-07 05:33:05.563277"]]
+  [1m[36m (14.2ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/users/shoeab
+Completed 302 Found in 19ms (ActiveRecord: 15.1ms)
+
+
+Started GET "/users/shoeab" for 127.0.0.1 at 2016-06-07 11:33:05 +0600
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"shoeab"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."slug" = $1 LIMIT 1  [["slug", "shoeab"]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1[0m  [["remember_token", "17c6001986cc48d264f13ec4092c39d230d26d74"]]
+  [1m[35mRelationship Load (0.3ms)[0m  SELECT  "relationships".* FROM "relationships" WHERE "relationships"."follower_id" = $1 AND "relationships"."followed_id" = $2 LIMIT 1  [["follower_id", 2], ["followed_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "relationships".* FROM "relationships" WHERE "relationships"."follower_id" = $1 AND "relationships"."followed_id" = $2 LIMIT 1[0m  [["follower_id", 2], ["followed_id", 1]]
+  Rendered shared/_unfollow.html.slim (2.6ms)
+  Rendered shared/_follow_form.html.slim (4.2ms)
+  Rendered shared/_profile.html.slim (4.7ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "tweets" WHERE "tweets"."user_id" = $1  [["user_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = $1[0m  [["follower_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = $1  [["followed_id", 1]]
+  Rendered shared/_stats.html.slim (2.7ms)
+  [1m[36mTweet Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tweets" WHERE "tweets"."user_id" = $1 LIMIT 1[0m  [["user_id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "tweets" WHERE "tweets"."user_id" = $1  [["user_id", 1]]
+  [1m[36mTweet Load (0.2ms)[0m  [1mSELECT  "tweets".* FROM "tweets" WHERE "tweets"."user_id" = $1  ORDER BY "tweets"."created_at" DESC LIMIT 30 OFFSET 0[0m  [["user_id", 1]]
+  Rendered shared/_feed_item.html.slim (0.8ms)
+  Rendered shared/_feed.html.slim (2.5ms)
+  Rendered users/show.html.slim within layouts/application (11.5ms)
+  Rendered layouts/_header.html.slim (0.4ms)
+  Rendered layouts/_footer.html.slim (0.0ms)
+Completed 200 OK in 29ms (Views: 25.2ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/users/shoeab" for 127.0.0.1 at 2016-06-07 11:33:09 +0600
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"shoeab"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."slug" = $1 LIMIT 1  [["slug", "shoeab"]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1[0m  [["remember_token", "227c9cfbf361819348a26e70ce56323b8c8ef179"]]
+  Rendered shared/_follow_form.html.slim (0.0ms)
+  Rendered shared/_profile.html.slim (0.8ms)
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "tweets" WHERE "tweets"."user_id" = $1  [["user_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = $1[0m  [["follower_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = $1  [["followed_id", 1]]
+  Rendered shared/_stats.html.slim (3.0ms)
+  Rendered shared/_error_messages.html.slim (0.0ms)
+  Rendered shared/_tweet_form.html.slim (0.7ms)
+  [1m[36mTweet Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tweets" WHERE "tweets"."user_id" = $1 LIMIT 1[0m  [["user_id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "tweets" WHERE "tweets"."user_id" = $1  [["user_id", 1]]
+  [1m[36mTweet Load (0.1ms)[0m  [1mSELECT  "tweets".* FROM "tweets" WHERE "tweets"."user_id" = $1  ORDER BY "tweets"."created_at" DESC LIMIT 30 OFFSET 0[0m  [["user_id", 1]]
+  Rendered shared/_feed_item.html.slim (0.9ms)
+  Rendered shared/_feed.html.slim (2.1ms)
+  Rendered users/show.html.slim within layouts/application (8.8ms)
+  Rendered layouts/_header.html.slim (0.4ms)
+  Rendered layouts/_footer.html.slim (0.0ms)
+Completed 200 OK in 28ms (Views: 24.4ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2016-06-07 11:33:13 +0600
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users"
+  Rendered users/index.html.slim within layouts/application (1.1ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1[0m  [["remember_token", "227c9cfbf361819348a26e70ce56323b8c8ef179"]]
+  Rendered layouts/_header.html.slim (0.9ms)
+  Rendered layouts/_footer.html.slim (0.0ms)
+Completed 200 OK in 18ms (Views: 17.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/Jack" for 127.0.0.1 at 2016-06-07 11:33:14 +0600
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"Jack"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."slug" = $1 LIMIT 1  [["slug", "Jack"]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1[0m  [["remember_token", "227c9cfbf361819348a26e70ce56323b8c8ef179"]]
+  [1m[35mRelationship Load (0.3ms)[0m  SELECT  "relationships".* FROM "relationships" WHERE "relationships"."follower_id" = $1 AND "relationships"."followed_id" = $2 LIMIT 1  [["follower_id", 1], ["followed_id", 2]]
+  Rendered shared/_follow.html.slim (1.3ms)
+  Rendered shared/_follow_form.html.slim (2.9ms)
+  Rendered shared/_profile.html.slim (3.5ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "tweets" WHERE "tweets"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = $1  [["follower_id", 2]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = $1[0m  [["followed_id", 2]]
+  Rendered shared/_stats.html.slim (3.2ms)
+  [1m[35mTweet Exists (0.1ms)[0m  SELECT  1 AS one FROM "tweets" WHERE "tweets"."user_id" = $1 LIMIT 1  [["user_id", 2]]
+  Rendered users/show.html.slim within layouts/application (8.3ms)
+  Rendered layouts/_header.html.slim (0.6ms)
+  Rendered layouts/_footer.html.slim (0.1ms)
+Completed 200 OK in 27ms (Views: 23.1ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/relationships" for 127.0.0.1 at 2016-06-07 11:33:17 +0600
+Processing by RelationshipsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"VI+WQlVVNrG+bHS4F0QywOJpoEuMBGFLEBCWc7GSbWk5+LjSBUb5H7Ugo3dspEyOXLhO9c7376ftUkb8TfZRoQ==", "relationship"=>{"followed_id"=>"2"}, "commit"=>"Follow"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1[0m  [["remember_token", "227c9cfbf361819348a26e70ce56323b8c8ef179"]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "relationships" ("followed_id", "follower_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["followed_id", 2], ["follower_id", 1], ["created_at", "2016-06-07 05:33:17.634184"], ["updated_at", "2016-06-07 05:33:17.634184"]]
+  [1m[36m (18.4ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/users/Jack
+Completed 302 Found in 22ms (ActiveRecord: 19.0ms)
+
+
+Started GET "/users/Jack" for 127.0.0.1 at 2016-06-07 11:33:17 +0600
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"Jack"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."slug" = $1 LIMIT 1  [["slug", "Jack"]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1[0m  [["remember_token", "227c9cfbf361819348a26e70ce56323b8c8ef179"]]
+  [1m[35mRelationship Load (0.2ms)[0m  SELECT  "relationships".* FROM "relationships" WHERE "relationships"."follower_id" = $1 AND "relationships"."followed_id" = $2 LIMIT 1  [["follower_id", 1], ["followed_id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "relationships".* FROM "relationships" WHERE "relationships"."follower_id" = $1 AND "relationships"."followed_id" = $2 LIMIT 1[0m  [["follower_id", 1], ["followed_id", 2]]
+  Rendered shared/_unfollow.html.slim (0.7ms)
+  Rendered shared/_follow_form.html.slim (1.9ms)
+  Rendered shared/_profile.html.slim (2.4ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "tweets" WHERE "tweets"."user_id" = $1  [["user_id", 2]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = $1[0m  [["follower_id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = $1  [["followed_id", 2]]
+  Rendered shared/_stats.html.slim (2.3ms)
+  [1m[36mTweet Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tweets" WHERE "tweets"."user_id" = $1 LIMIT 1[0m  [["user_id", 2]]
+  Rendered users/show.html.slim within layouts/application (5.9ms)
+  Rendered layouts/_header.html.slim (0.4ms)
+  Rendered layouts/_footer.html.slim (0.0ms)
+Completed 200 OK in 23ms (Views: 19.4ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/users/shoeab" for 127.0.0.1 at 2016-06-07 11:33:19 +0600
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"shoeab"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."slug" = $1 LIMIT 1  [["slug", "shoeab"]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1[0m  [["remember_token", "17c6001986cc48d264f13ec4092c39d230d26d74"]]
+  [1m[35mRelationship Load (0.2ms)[0m  SELECT  "relationships".* FROM "relationships" WHERE "relationships"."follower_id" = $1 AND "relationships"."followed_id" = $2 LIMIT 1  [["follower_id", 2], ["followed_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "relationships".* FROM "relationships" WHERE "relationships"."follower_id" = $1 AND "relationships"."followed_id" = $2 LIMIT 1[0m  [["follower_id", 2], ["followed_id", 1]]
+  Rendered shared/_unfollow.html.slim (1.1ms)
+  Rendered shared/_follow_form.html.slim (2.7ms)
+  Rendered shared/_profile.html.slim (3.2ms)
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM "tweets" WHERE "tweets"."user_id" = $1  [["user_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = $1[0m  [["follower_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = $1  [["followed_id", 1]]
+  Rendered shared/_stats.html.slim (3.9ms)
+  [1m[36mTweet Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tweets" WHERE "tweets"."user_id" = $1 LIMIT 1[0m  [["user_id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "tweets" WHERE "tweets"."user_id" = $1  [["user_id", 1]]
+  [1m[36mTweet Load (0.1ms)[0m  [1mSELECT  "tweets".* FROM "tweets" WHERE "tweets"."user_id" = $1  ORDER BY "tweets"."created_at" DESC LIMIT 30 OFFSET 0[0m  [["user_id", 1]]
+  Rendered shared/_feed_item.html.slim (0.9ms)
+  Rendered shared/_feed.html.slim (2.0ms)
+  Rendered users/show.html.slim within layouts/application (11.0ms)
+  Rendered layouts/_header.html.slim (0.4ms)
+  Rendered layouts/_footer.html.slim (0.1ms)
+Completed 200 OK in 30ms (Views: 26.4ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/tweets" for 127.0.0.1 at 2016-06-07 11:33:47 +0600
+Processing by TweetsController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1  [["remember_token", "227c9cfbf361819348a26e70ce56323b8c8ef179"]]
+  Rendered shared/_follow_form.html.slim (0.1ms)
+  Rendered shared/_profile.html.slim (1.0ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "tweets" WHERE "tweets"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = $1  [["follower_id", 1]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = $1[0m  [["followed_id", 1]]
+  Rendered shared/_stats.html.slim (3.5ms)
+  Rendered shared/_error_messages.html.slim (0.0ms)
+  Rendered shared/_tweet_form.html.slim (0.8ms)
+  Rendered shared/_user_info.html.slim (6.5ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "tweets"
+  [1m[36mTweet Load (0.3ms)[0m  [1mSELECT  "tweets".* FROM "tweets"  ORDER BY "tweets"."created_at" DESC LIMIT 30 OFFSET 0[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered shared/_feed_item.html.slim (2.1ms)
+  Rendered shared/_feed.html.slim (4.1ms)
+  Rendered static_pages/home.html.slim within layouts/application (11.4ms)
+  Rendered layouts/_header.html.slim (0.5ms)
+  Rendered layouts/_footer.html.slim (0.0ms)
+Completed 200 OK in 26ms (Views: 23.2ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/users/shoeab" for 127.0.0.1 at 2016-06-07 11:33:52 +0600
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"shoeab"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."slug" = $1 LIMIT 1[0m  [["slug", "shoeab"]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1  [["remember_token", "17c6001986cc48d264f13ec4092c39d230d26d74"]]
+  [1m[36mRelationship Load (0.3ms)[0m  [1mSELECT  "relationships".* FROM "relationships" WHERE "relationships"."follower_id" = $1 AND "relationships"."followed_id" = $2 LIMIT 1[0m  [["follower_id", 2], ["followed_id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "relationships".* FROM "relationships" WHERE "relationships"."follower_id" = $1 AND "relationships"."followed_id" = $2 LIMIT 1  [["follower_id", 2], ["followed_id", 1]]
+  Rendered shared/_unfollow.html.slim (2.1ms)
+  Rendered shared/_follow_form.html.slim (3.3ms)
+  Rendered shared/_profile.html.slim (3.8ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "tweets" WHERE "tweets"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = $1  [["follower_id", 1]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = $1[0m  [["followed_id", 1]]
+  Rendered shared/_stats.html.slim (2.4ms)
+  [1m[35mTweet Exists (0.2ms)[0m  SELECT  1 AS one FROM "tweets" WHERE "tweets"."user_id" = $1 LIMIT 1  [["user_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "tweets" WHERE "tweets"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35mTweet Load (0.2ms)[0m  SELECT  "tweets".* FROM "tweets" WHERE "tweets"."user_id" = $1  ORDER BY "tweets"."created_at" DESC LIMIT 30 OFFSET 0  [["user_id", 1]]
+  Rendered shared/_feed_item.html.slim (0.7ms)
+  Rendered shared/_feed.html.slim (2.3ms)
+  Rendered users/show.html.slim within layouts/application (10.7ms)
+  Rendered layouts/_header.html.slim (0.4ms)
+  Rendered layouts/_footer.html.slim (0.1ms)
+Completed 200 OK in 26ms (Views: 22.6ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/users/shoeab" for 127.0.0.1 at 2016-06-07 11:33:53 +0600
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"shoeab"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."slug" = $1 LIMIT 1[0m  [["slug", "shoeab"]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1  [["remember_token", "17c6001986cc48d264f13ec4092c39d230d26d74"]]
+  [1m[36mRelationship Load (0.1ms)[0m  [1mSELECT  "relationships".* FROM "relationships" WHERE "relationships"."follower_id" = $1 AND "relationships"."followed_id" = $2 LIMIT 1[0m  [["follower_id", 2], ["followed_id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "relationships".* FROM "relationships" WHERE "relationships"."follower_id" = $1 AND "relationships"."followed_id" = $2 LIMIT 1  [["follower_id", 2], ["followed_id", 1]]
+  Rendered shared/_unfollow.html.slim (0.6ms)
+  Rendered shared/_follow_form.html.slim (1.8ms)
+  Rendered shared/_profile.html.slim (2.3ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "tweets" WHERE "tweets"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = $1  [["follower_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = $1[0m  [["followed_id", 1]]
+  Rendered shared/_stats.html.slim (2.7ms)
+  [1m[35mTweet Exists (0.1ms)[0m  SELECT  1 AS one FROM "tweets" WHERE "tweets"."user_id" = $1 LIMIT 1  [["user_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "tweets" WHERE "tweets"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35mTweet Load (0.1ms)[0m  SELECT  "tweets".* FROM "tweets" WHERE "tweets"."user_id" = $1  ORDER BY "tweets"."created_at" DESC LIMIT 30 OFFSET 0  [["user_id", 1]]
+  Rendered shared/_feed_item.html.slim (0.6ms)
+  Rendered shared/_feed.html.slim (1.9ms)
+  Rendered users/show.html.slim within layouts/application (8.6ms)
+  Rendered layouts/_header.html.slim (0.4ms)
+  Rendered layouts/_footer.html.slim (0.0ms)
+Completed 200 OK in 24ms (Views: 21.0ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2016-06-07 11:33:56 +0600
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.slim within layouts/application (0.9ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1  [["remember_token", "17c6001986cc48d264f13ec4092c39d230d26d74"]]
+  Rendered layouts/_header.html.slim (0.8ms)
+  Rendered layouts/_footer.html.slim (0.0ms)
+Completed 200 OK in 15ms (Views: 14.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/tweets" for 127.0.0.1 at 2016-06-07 11:33:58 +0600
+Processing by TweetsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1[0m  [["remember_token", "17c6001986cc48d264f13ec4092c39d230d26d74"]]
+  Rendered shared/_follow_form.html.slim (0.0ms)
+  Rendered shared/_profile.html.slim (0.6ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "tweets" WHERE "tweets"."user_id" = $1  [["user_id", 2]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = $1[0m  [["follower_id", 2]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = $1  [["followed_id", 2]]
+  Rendered shared/_stats.html.slim (3.4ms)
+  Rendered shared/_error_messages.html.slim (0.0ms)
+  Rendered shared/_tweet_form.html.slim (0.8ms)
+  Rendered shared/_user_info.html.slim (5.7ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "tweets"[0m
+  [1m[35mTweet Load (0.2ms)[0m  SELECT  "tweets".* FROM "tweets"  ORDER BY "tweets"."created_at" DESC LIMIT 30 OFFSET 0
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered shared/_feed_item.html.slim (1.7ms)
+  Rendered shared/_feed.html.slim (3.1ms)
+  Rendered static_pages/home.html.slim within layouts/application (9.5ms)
+  Rendered layouts/_header.html.slim (0.5ms)
+  Rendered layouts/_footer.html.slim (0.1ms)
+Completed 200 OK in 24ms (Views: 21.7ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2016-06-07 11:34:05 +0600
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users"
+  Rendered users/index.html.slim within layouts/application (1.2ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1[0m  [["remember_token", "17c6001986cc48d264f13ec4092c39d230d26d74"]]
+  Rendered layouts/_header.html.slim (0.9ms)
+  Rendered layouts/_footer.html.slim (0.1ms)
+Completed 200 OK in 16ms (Views: 15.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/Jack" for 127.0.0.1 at 2016-06-07 11:34:06 +0600
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"Jack"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."slug" = $1 LIMIT 1  [["slug", "Jack"]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1[0m  [["remember_token", "17c6001986cc48d264f13ec4092c39d230d26d74"]]
+  Rendered shared/_follow_form.html.slim (0.0ms)
+  Rendered shared/_profile.html.slim (0.6ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "tweets" WHERE "tweets"."user_id" = $1  [["user_id", 2]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = $1[0m  [["follower_id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = $1  [["followed_id", 2]]
+  Rendered shared/_stats.html.slim (2.5ms)
+  Rendered shared/_error_messages.html.slim (0.0ms)
+  Rendered shared/_tweet_form.html.slim (0.7ms)
+  [1m[36mTweet Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "tweets" WHERE "tweets"."user_id" = $1 LIMIT 1[0m  [["user_id", 2]]
+  Rendered users/show.html.slim within layouts/application (5.6ms)
+  Rendered layouts/_header.html.slim (0.4ms)
+  Rendered layouts/_footer.html.slim (0.1ms)
+Completed 200 OK in 21ms (Views: 18.4ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/tweets" for 127.0.0.1 at 2016-06-07 11:34:07 +0600
+Processing by TweetsController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1  [["remember_token", "17c6001986cc48d264f13ec4092c39d230d26d74"]]
+  Rendered shared/_follow_form.html.slim (0.0ms)
+  Rendered shared/_profile.html.slim (0.5ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "tweets" WHERE "tweets"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = $1  [["follower_id", 2]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = $1[0m  [["followed_id", 2]]
+  Rendered shared/_stats.html.slim (2.2ms)
+  Rendered shared/_error_messages.html.slim (0.0ms)
+  Rendered shared/_tweet_form.html.slim (0.7ms)
+  Rendered shared/_user_info.html.slim (4.3ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "tweets"
+  [1m[36mTweet Load (0.1ms)[0m  [1mSELECT  "tweets".* FROM "tweets"  ORDER BY "tweets"."created_at" DESC LIMIT 30 OFFSET 0[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered shared/_feed_item.html.slim (1.4ms)
+  Rendered shared/_feed.html.slim (2.7ms)
+  Rendered static_pages/home.html.slim within layouts/application (7.5ms)
+  Rendered layouts/_header.html.slim (0.4ms)
+  Rendered layouts/_footer.html.slim (0.0ms)
+Completed 200 OK in 23ms (Views: 21.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/Jack/edit" for 127.0.0.1 at 2016-06-07 11:34:08 +0600
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"Jack"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."slug" = $1 LIMIT 1[0m  [["slug", "Jack"]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1  [["remember_token", "17c6001986cc48d264f13ec4092c39d230d26d74"]]
+  Rendered shared/_error_messages.html.slim (0.0ms)
+  Rendered users/edit.html.slim within layouts/application (2.1ms)
+  Rendered layouts/_header.html.slim (0.4ms)
+  Rendered layouts/_footer.html.slim (0.1ms)
+Completed 200 OK in 18ms (Views: 16.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2016-06-07 11:34:24 +0600
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.slim within layouts/application (0.9ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1  [["remember_token", "17c6001986cc48d264f13ec4092c39d230d26d74"]]
+  Rendered layouts/_header.html.slim (0.8ms)
+  Rendered layouts/_footer.html.slim (0.0ms)
+Completed 200 OK in 15ms (Views: 14.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/Jack/edit" for 127.0.0.1 at 2016-06-07 11:35:26 +0600
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"Jack"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."slug" = $1 LIMIT 1[0m  [["slug", "Jack"]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1  [["remember_token", "17c6001986cc48d264f13ec4092c39d230d26d74"]]
+  Rendered shared/_error_messages.html.slim (0.0ms)
+  Rendered users/edit.html.slim within layouts/application (1.5ms)
+  Rendered layouts/_header.html.slim (0.4ms)
+  Rendered layouts/_footer.html.slim (0.0ms)
+Completed 200 OK in 16ms (Views: 14.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-06-07 11:35:27 +0600
+Processing by StaticPagesController#home as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1[0m  [["remember_token", "17c6001986cc48d264f13ec4092c39d230d26d74"]]
+  Rendered shared/_follow_form.html.slim (0.0ms)
+  Rendered shared/_profile.html.slim (0.5ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "tweets" WHERE "tweets"."user_id" = $1  [["user_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = $1[0m  [["follower_id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = $1  [["followed_id", 2]]
+  Rendered shared/_stats.html.slim (2.1ms)
+  Rendered shared/_error_messages.html.slim (0.0ms)
+  Rendered shared/_tweet_form.html.slim (0.7ms)
+  Rendered shared/_user_info.html.slim (4.2ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "tweets" WHERE ("tweets"."user_id" IN (SELECT "relationships"."followed_id" FROM "relationships" WHERE "relationships"."follower_id" = 2) OR "tweets"."user_id" = 2)[0m
+  [1m[35mTweet Load (0.2ms)[0m  SELECT  "tweets".* FROM "tweets" WHERE ("tweets"."user_id" IN (SELECT "relationships"."followed_id" FROM "relationships" WHERE "relationships"."follower_id" = 2) OR "tweets"."user_id" = 2)  ORDER BY "tweets"."created_at" DESC LIMIT 30 OFFSET 0
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered shared/_feed_item.html.slim (1.7ms)
+  Rendered shared/_feed.html.slim (3.3ms)
+  Rendered static_pages/home.html.slim within layouts/application (8.1ms)
+  Rendered layouts/_header.html.slim (0.5ms)
+  Rendered layouts/_footer.html.slim (0.1ms)
+Completed 200 OK in 24ms (Views: 21.6ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-06-07 11:40:56 +0600
+Processing by StaticPagesController#home as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1  [["remember_token", "17c6001986cc48d264f13ec4092c39d230d26d74"]]
+  Rendered shared/_follow_form.html.slim (0.0ms)
+  Rendered shared/_profile.html.slim (0.8ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "tweets" WHERE "tweets"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = $1  [["follower_id", 2]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = $1[0m  [["followed_id", 2]]
+  Rendered shared/_stats.html.slim (2.6ms)
+  Rendered shared/_error_messages.html.slim (0.0ms)
+  Rendered shared/_tweet_form.html.slim (0.6ms)
+  Rendered shared/_user_info.html.slim (5.1ms)
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "tweets" WHERE ("tweets"."user_id" IN (SELECT "relationships"."followed_id" FROM "relationships" WHERE "relationships"."follower_id" = 2) OR "tweets"."user_id" = 2)
+  [1m[36mTweet Load (0.3ms)[0m  [1mSELECT  "tweets".* FROM "tweets" WHERE ("tweets"."user_id" IN (SELECT "relationships"."followed_id" FROM "relationships" WHERE "relationships"."follower_id" = 2) OR "tweets"."user_id" = 2)  ORDER BY "tweets"."created_at" DESC LIMIT 30 OFFSET 0[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered shared/_feed_item.html.slim (1.5ms)
+  Rendered shared/_feed.html.slim (3.2ms)
+  Rendered static_pages/home.html.slim within layouts/application (9.1ms)
+  Rendered layouts/_header.html.slim (0.4ms)
+  Rendered layouts/_footer.html.slim (0.0ms)
+Completed 200 OK in 30ms (Views: 27.1ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/tweets" for 127.0.0.1 at 2016-06-07 11:41:21 +0600
+Processing by TweetsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dyfXhp2//ZEp11uai1wdAoDnY9TFQectw2J76doQWo8b1fbT6Qcbxg+mY9s9+J/LIkLtkjajD8uL5ik/UXUL1g==", "tweet"=>{"content"=>"What a cruel world we are living in"}, "commit"=>"Post"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1[0m  [["remember_token", "17c6001986cc48d264f13ec4092c39d230d26d74"]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "tweets" ("content", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "What a cruel world we are living in"], ["user_id", 2], ["created_at", "2016-06-07 05:41:21.887015"], ["updated_at", "2016-06-07 05:41:21.887015"]]
+  [1m[35m (12.6ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 17ms (ActiveRecord: 13.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-06-07 11:41:21 +0600
+Processing by StaticPagesController#home as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1[0m  [["remember_token", "17c6001986cc48d264f13ec4092c39d230d26d74"]]
+  Rendered shared/_follow_form.html.slim (0.0ms)
+  Rendered shared/_profile.html.slim (0.9ms)
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "tweets" WHERE "tweets"."user_id" = $1  [["user_id", 2]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = $1[0m  [["follower_id", 2]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = $1  [["followed_id", 2]]
+  Rendered shared/_stats.html.slim (4.2ms)
+  Rendered shared/_error_messages.html.slim (0.0ms)
+  Rendered shared/_tweet_form.html.slim (0.8ms)
+  Rendered shared/_user_info.html.slim (6.9ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "tweets" WHERE ("tweets"."user_id" IN (SELECT "relationships"."followed_id" FROM "relationships" WHERE "relationships"."follower_id" = 2) OR "tweets"."user_id" = 2)[0m
+  [1m[35mTweet Load (0.9ms)[0m  SELECT  "tweets".* FROM "tweets" WHERE ("tweets"."user_id" IN (SELECT "relationships"."followed_id" FROM "relationships" WHERE "relationships"."follower_id" = 2) OR "tweets"."user_id" = 2)  ORDER BY "tweets"."created_at" DESC LIMIT 30 OFFSET 0
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered shared/_feed_item.html.slim (11.1ms)
+  Rendered shared/_feed.html.slim (14.1ms)
+  Rendered static_pages/home.html.slim within layouts/application (21.6ms)
+  Rendered layouts/_header.html.slim (0.4ms)
+  Rendered layouts/_footer.html.slim (0.2ms)
+Completed 200 OK in 45ms (Views: 39.5ms | ActiveRecord: 2.7ms)
+
+
+Started DELETE "/tweets/1" for 127.0.0.1 at 2016-06-07 11:41:49 +0600
+Processing by TweetsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"OngyUsb9uNT+kpWz5RmPLNcrE1nvsUDDD5t9YpvXxw1WihMHskVeg9jjrfJTvQ3ldY6dHxxTqCVHHy+0ELKWVA==", "id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1[0m  [["remember_token", "17c6001986cc48d264f13ec4092c39d230d26d74"]]
+  [1m[35mTweet Load (0.2ms)[0m  SELECT  "tweets".* FROM "tweets" WHERE "tweets"."user_id" = $1 AND "tweets"."id" = $2  ORDER BY "tweets"."created_at" DESC LIMIT 1  [["user_id", 2], ["id", 1]]
+Redirected to http://localhost:3000/
+Filter chain halted as :correct_user rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-06-07 11:41:49 +0600
+Processing by StaticPagesController#home as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1[0m  [["remember_token", "17c6001986cc48d264f13ec4092c39d230d26d74"]]
+  Rendered shared/_follow_form.html.slim (0.0ms)
+  Rendered shared/_profile.html.slim (0.6ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "tweets" WHERE "tweets"."user_id" = $1  [["user_id", 2]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = $1[0m  [["follower_id", 2]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = $1  [["followed_id", 2]]
+  Rendered shared/_stats.html.slim (4.0ms)
+  Rendered shared/_error_messages.html.slim (0.1ms)
+  Rendered shared/_tweet_form.html.slim (0.7ms)
+  Rendered shared/_user_info.html.slim (6.5ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "tweets" WHERE ("tweets"."user_id" IN (SELECT "relationships"."followed_id" FROM "relationships" WHERE "relationships"."follower_id" = 2) OR "tweets"."user_id" = 2)[0m
+  [1m[35mTweet Load (0.2ms)[0m  SELECT  "tweets".* FROM "tweets" WHERE ("tweets"."user_id" IN (SELECT "relationships"."followed_id" FROM "relationships" WHERE "relationships"."follower_id" = 2) OR "tweets"."user_id" = 2)  ORDER BY "tweets"."created_at" DESC LIMIT 30 OFFSET 0
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered shared/_feed_item.html.slim (7.2ms)
+  Rendered shared/_feed.html.slim (9.1ms)
+  Rendered static_pages/home.html.slim within layouts/application (16.2ms)
+  Rendered layouts/_header.html.slim (0.4ms)
+  Rendered layouts/_footer.html.slim (0.0ms)
+Completed 200 OK in 36ms (Views: 32.1ms | ActiveRecord: 1.8ms)
+
+
+Started DELETE "/tweets/2" for 127.0.0.1 at 2016-06-07 11:42:09 +0600
+Processing by TweetsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"x21Re3bDhD3hQKsCq+txmIXCa/cGoBkAVTFOwBC4IACrn3AuAntiascxk0MdT/NRJ2flsfVC8eYdtRwWm91xWQ==", "id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1[0m  [["remember_token", "17c6001986cc48d264f13ec4092c39d230d26d74"]]
+  [1m[35mTweet Load (0.5ms)[0m  SELECT  "tweets".* FROM "tweets" WHERE "tweets"."user_id" = $1 AND "tweets"."id" = $2  ORDER BY "tweets"."created_at" DESC LIMIT 1  [["user_id", 2], ["id", 2]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "tweets" WHERE "tweets"."id" = $1  [["id", 2]]
+  [1m[36m (11.7ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 18ms (ActiveRecord: 12.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-06-07 11:42:09 +0600
+Processing by StaticPagesController#home as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1  [["remember_token", "17c6001986cc48d264f13ec4092c39d230d26d74"]]
+  Rendered shared/_follow_form.html.slim (0.0ms)
+  Rendered shared/_profile.html.slim (1.0ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "tweets" WHERE "tweets"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = $1  [["follower_id", 2]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = $1[0m  [["followed_id", 2]]
+  Rendered shared/_stats.html.slim (4.5ms)
+  Rendered shared/_error_messages.html.slim (0.0ms)
+  Rendered shared/_tweet_form.html.slim (1.1ms)
+  Rendered shared/_user_info.html.slim (8.3ms)
+  [1m[35m (0.6ms)[0m  SELECT COUNT(*) FROM "tweets" WHERE ("tweets"."user_id" IN (SELECT "relationships"."followed_id" FROM "relationships" WHERE "relationships"."follower_id" = 2) OR "tweets"."user_id" = 2)
+  [1m[36mTweet Load (0.5ms)[0m  [1mSELECT  "tweets".* FROM "tweets" WHERE ("tweets"."user_id" IN (SELECT "relationships"."followed_id" FROM "relationships" WHERE "relationships"."follower_id" = 2) OR "tweets"."user_id" = 2)  ORDER BY "tweets"."created_at" DESC LIMIT 30 OFFSET 0[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered shared/_feed_item.html.slim (3.1ms)
+  Rendered shared/_feed.html.slim (7.2ms)
+  Rendered static_pages/home.html.slim within layouts/application (16.6ms)
+  Rendered layouts/_header.html.slim (0.6ms)
+  Rendered layouts/_footer.html.slim (0.1ms)
+Completed 200 OK in 47ms (Views: 41.8ms | ActiveRecord: 2.1ms)
+
+
+Started POST "/tweets" for 127.0.0.1 at 2016-06-07 11:42:27 +0600
+Processing by TweetsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"eeqyyajgVBPPpW/NNvUASGJPcdN7W6/m6NyDyE+BVc4VGJOc3FiyROnUV4yAUYKBwOr/lYi5RwCgWNEexOQElw==", "tweet"=>{"content"=>"How is your life ?"}, "commit"=>"Post"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1[0m  [["remember_token", "17c6001986cc48d264f13ec4092c39d230d26d74"]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "tweets" ("content", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "How is your life ?"], ["user_id", 2], ["created_at", "2016-06-07 05:42:27.645413"], ["updated_at", "2016-06-07 05:42:27.645413"]]
+  [1m[35m (11.2ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 15ms (ActiveRecord: 11.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-06-07 11:42:27 +0600
+Processing by StaticPagesController#home as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1[0m  [["remember_token", "17c6001986cc48d264f13ec4092c39d230d26d74"]]
+  Rendered shared/_follow_form.html.slim (0.0ms)
+  Rendered shared/_profile.html.slim (0.5ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "tweets" WHERE "tweets"."user_id" = $1  [["user_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = $1[0m  [["follower_id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = $1  [["followed_id", 2]]
+  Rendered shared/_stats.html.slim (2.2ms)
+  Rendered shared/_error_messages.html.slim (0.0ms)
+  Rendered shared/_tweet_form.html.slim (0.8ms)
+  Rendered shared/_user_info.html.slim (4.3ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "tweets" WHERE ("tweets"."user_id" IN (SELECT "relationships"."followed_id" FROM "relationships" WHERE "relationships"."follower_id" = 2) OR "tweets"."user_id" = 2)[0m
+  [1m[35mTweet Load (0.2ms)[0m  SELECT  "tweets".* FROM "tweets" WHERE ("tweets"."user_id" IN (SELECT "relationships"."followed_id" FROM "relationships" WHERE "relationships"."follower_id" = 2) OR "tweets"."user_id" = 2)  ORDER BY "tweets"."created_at" DESC LIMIT 30 OFFSET 0
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered shared/_feed_item.html.slim (5.5ms)
+  Rendered shared/_feed.html.slim (8.8ms)
+  Rendered static_pages/home.html.slim within layouts/application (13.7ms)
+  Rendered layouts/_header.html.slim (0.5ms)
+  Rendered layouts/_footer.html.slim (0.0ms)
+Completed 200 OK in 30ms (Views: 27.2ms | ActiveRecord: 1.4ms)
+
+
+Started DELETE "/tweets/1" for 127.0.0.1 at 2016-06-07 11:42:44 +0600
+Processing by TweetsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"Yr665oeg+T3XzeziNbRjyFA9O4IaMERvjaRwMq85UGgOTJuz8xgfavG81KODEOEB8pi1xOnSrInFICLkJFwBMQ==", "id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1[0m  [["remember_token", "17c6001986cc48d264f13ec4092c39d230d26d74"]]
+  [1m[35mTweet Load (0.2ms)[0m  SELECT  "tweets".* FROM "tweets" WHERE "tweets"."user_id" = $1 AND "tweets"."id" = $2  ORDER BY "tweets"."created_at" DESC LIMIT 1  [["user_id", 2], ["id", 1]]
+Redirected to http://localhost:3000/
+Filter chain halted as :correct_user rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-06-07 11:42:44 +0600
+Processing by StaticPagesController#home as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1[0m  [["remember_token", "17c6001986cc48d264f13ec4092c39d230d26d74"]]
+  Rendered shared/_follow_form.html.slim (0.0ms)
+  Rendered shared/_profile.html.slim (0.7ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "tweets" WHERE "tweets"."user_id" = $1  [["user_id", 2]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = $1[0m  [["follower_id", 2]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = $1  [["followed_id", 2]]
+  Rendered shared/_stats.html.slim (4.5ms)
+  Rendered shared/_error_messages.html.slim (0.0ms)
+  Rendered shared/_tweet_form.html.slim (0.9ms)
+  Rendered shared/_user_info.html.slim (7.0ms)
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "tweets" WHERE ("tweets"."user_id" IN (SELECT "relationships"."followed_id" FROM "relationships" WHERE "relationships"."follower_id" = 2) OR "tweets"."user_id" = 2)[0m
+  [1m[35mTweet Load (0.3ms)[0m  SELECT  "tweets".* FROM "tweets" WHERE ("tweets"."user_id" IN (SELECT "relationships"."followed_id" FROM "relationships" WHERE "relationships"."follower_id" = 2) OR "tweets"."user_id" = 2)  ORDER BY "tweets"."created_at" DESC LIMIT 30 OFFSET 0
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered shared/_feed_item.html.slim (5.3ms)
+  Rendered shared/_feed.html.slim (7.6ms)
+  Rendered static_pages/home.html.slim within layouts/application (15.1ms)
+  Rendered layouts/_header.html.slim (0.4ms)
+  Rendered layouts/_footer.html.slim (0.1ms)
+Completed 200 OK in 33ms (Views: 29.7ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2016-06-07 11:53:12 +0600
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.slim within layouts/application (1.0ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1  [["remember_token", "227c9cfbf361819348a26e70ce56323b8c8ef179"]]
+  Rendered layouts/_header.html.slim (0.8ms)
+  Rendered layouts/_footer.html.slim (0.0ms)
+Completed 200 OK in 52ms (Views: 46.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/shoeab" for 127.0.0.1 at 2016-06-07 11:53:13 +0600
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"shoeab"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."slug" = $1 LIMIT 1[0m  [["slug", "shoeab"]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1  [["remember_token", "227c9cfbf361819348a26e70ce56323b8c8ef179"]]
+  Rendered shared/_follow_form.html.slim (0.0ms)
+  Rendered shared/_profile.html.slim (0.5ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "tweets" WHERE "tweets"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = $1  [["follower_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = $1[0m  [["followed_id", 1]]
+  Rendered shared/_stats.html.slim (2.7ms)
+  Rendered shared/_error_messages.html.slim (0.0ms)
+  Rendered shared/_tweet_form.html.slim (0.9ms)
+  [1m[35mTweet Exists (0.2ms)[0m  SELECT  1 AS one FROM "tweets" WHERE "tweets"."user_id" = $1 LIMIT 1  [["user_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "tweets" WHERE "tweets"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35mTweet Load (0.2ms)[0m  SELECT  "tweets".* FROM "tweets" WHERE "tweets"."user_id" = $1  ORDER BY "tweets"."created_at" DESC LIMIT 30 OFFSET 0  [["user_id", 1]]
+  Rendered shared/_feed_item.html.slim (0.7ms)
+  Rendered shared/_feed.html.slim (2.4ms)
+  Rendered users/show.html.slim within layouts/application (8.8ms)
+  Rendered layouts/_header.html.slim (1.6ms)
+  Rendered layouts/_footer.html.slim (0.1ms)
+Completed 200 OK in 27ms (Views: 23.6ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/tweets" for 127.0.0.1 at 2016-06-07 11:53:14 +0600
+Processing by TweetsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1[0m  [["remember_token", "227c9cfbf361819348a26e70ce56323b8c8ef179"]]
+  Rendered shared/_follow_form.html.slim (0.0ms)
+  Rendered shared/_profile.html.slim (0.6ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "tweets" WHERE "tweets"."user_id" = $1  [["user_id", 1]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = $1[0m  [["follower_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = $1  [["followed_id", 1]]
+  Rendered shared/_stats.html.slim (2.3ms)
+  Rendered shared/_error_messages.html.slim (0.0ms)
+  Rendered shared/_tweet_form.html.slim (0.7ms)
+  Rendered shared/_user_info.html.slim (4.4ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "tweets"[0m
+  [1m[35mTweet Load (0.2ms)[0m  SELECT  "tweets".* FROM "tweets"  ORDER BY "tweets"."created_at" DESC LIMIT 30 OFFSET 0
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered shared/_feed_item.html.slim (6.5ms)
+  Rendered shared/_feed.html.slim (8.4ms)
+  Rendered static_pages/home.html.slim within layouts/application (13.7ms)
+  Rendered layouts/_header.html.slim (0.3ms)
+  Rendered layouts/_footer.html.slim (0.0ms)
+Completed 200 OK in 33ms (Views: 30.3ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/users/shoeab/edit" for 127.0.0.1 at 2016-06-07 11:53:14 +0600
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"shoeab"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."slug" = $1 LIMIT 1[0m  [["slug", "shoeab"]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1  [["remember_token", "227c9cfbf361819348a26e70ce56323b8c8ef179"]]
+  Rendered shared/_error_messages.html.slim (0.0ms)
+  Rendered users/edit.html.slim within layouts/application (2.3ms)
+  Rendered layouts/_header.html.slim (0.5ms)
+  Rendered layouts/_footer.html.slim (0.0ms)
+Completed 200 OK in 23ms (Views: 21.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/Jack" for 127.0.0.1 at 2016-06-07 11:58:35 +0600
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"Jack"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."slug" = $1 LIMIT 1[0m  [["slug", "Jack"]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1  [["remember_token", "17c6001986cc48d264f13ec4092c39d230d26d74"]]
+  Rendered shared/_follow_form.html.slim (0.0ms)
+  Rendered shared/_profile.html.slim (0.7ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "tweets" WHERE "tweets"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = $1  [["follower_id", 2]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = $1[0m  [["followed_id", 2]]
+  Rendered shared/_stats.html.slim (2.5ms)
+  Rendered shared/_error_messages.html.slim (0.0ms)
+  Rendered shared/_tweet_form.html.slim (0.8ms)
+  [1m[35mTweet Exists (0.1ms)[0m  SELECT  1 AS one FROM "tweets" WHERE "tweets"."user_id" = $1 LIMIT 1  [["user_id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "tweets" WHERE "tweets"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[35mTweet Load (0.1ms)[0m  SELECT  "tweets".* FROM "tweets" WHERE "tweets"."user_id" = $1  ORDER BY "tweets"."created_at" DESC LIMIT 30 OFFSET 0  [["user_id", 2]]
+  Rendered shared/_feed_item.html.slim (0.8ms)
+  Rendered shared/_feed.html.slim (2.4ms)
+  Rendered users/show.html.slim within layouts/application (8.4ms)
+  Rendered layouts/_header.html.slim (0.4ms)
+  Rendered layouts/_footer.html.slim (0.0ms)
+Completed 200 OK in 33ms (Views: 29.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/Jack/edit" for 127.0.0.1 at 2016-06-07 11:58:43 +0600
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"Jack"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."slug" = $1 LIMIT 1[0m  [["slug", "Jack"]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1  [["remember_token", "17c6001986cc48d264f13ec4092c39d230d26d74"]]
+  Rendered shared/_error_messages.html.slim (0.0ms)
+  Rendered users/edit.html.slim within layouts/application (2.0ms)
+  Rendered layouts/_header.html.slim (0.3ms)
+  Rendered layouts/_footer.html.slim (0.0ms)
+Completed 200 OK in 23ms (Views: 21.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/Jack" for 127.0.0.1 at 2016-06-07 11:58:44 +0600
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"Jack"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."slug" = $1 LIMIT 1[0m  [["slug", "Jack"]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1  [["remember_token", "17c6001986cc48d264f13ec4092c39d230d26d74"]]
+  Rendered shared/_follow_form.html.slim (0.1ms)
+  Rendered shared/_profile.html.slim (1.0ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "tweets" WHERE "tweets"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = $1  [["follower_id", 2]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = $1[0m  [["followed_id", 2]]
+  Rendered shared/_stats.html.slim (3.7ms)
+  Rendered shared/_error_messages.html.slim (0.0ms)
+  Rendered shared/_tweet_form.html.slim (1.0ms)
+  [1m[35mTweet Exists (0.2ms)[0m  SELECT  1 AS one FROM "tweets" WHERE "tweets"."user_id" = $1 LIMIT 1  [["user_id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "tweets" WHERE "tweets"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[35mTweet Load (0.2ms)[0m  SELECT  "tweets".* FROM "tweets" WHERE "tweets"."user_id" = $1  ORDER BY "tweets"."created_at" DESC LIMIT 30 OFFSET 0  [["user_id", 2]]
+  Rendered shared/_feed_item.html.slim (1.1ms)
+  Rendered shared/_feed.html.slim (2.9ms)
+  Rendered users/show.html.slim within layouts/application (11.8ms)
+  Rendered layouts/_header.html.slim (0.5ms)
+  Rendered layouts/_footer.html.slim (0.0ms)
+Completed 200 OK in 43ms (Views: 36.5ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/users/Jack" for 127.0.0.1 at 2016-06-07 11:58:51 +0600
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"Jack"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."slug" = $1 LIMIT 1[0m  [["slug", "Jack"]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1  [["remember_token", "17c6001986cc48d264f13ec4092c39d230d26d74"]]
+  Rendered shared/_follow_form.html.slim (0.0ms)
+  Rendered shared/_profile.html.slim (0.7ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "tweets" WHERE "tweets"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = $1  [["follower_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = $1[0m  [["followed_id", 2]]
+  Rendered shared/_stats.html.slim (2.7ms)
+  Rendered shared/_error_messages.html.slim (0.0ms)
+  Rendered shared/_tweet_form.html.slim (0.8ms)
+  [1m[35mTweet Exists (0.1ms)[0m  SELECT  1 AS one FROM "tweets" WHERE "tweets"."user_id" = $1 LIMIT 1  [["user_id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "tweets" WHERE "tweets"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[35mTweet Load (0.1ms)[0m  SELECT  "tweets".* FROM "tweets" WHERE "tweets"."user_id" = $1  ORDER BY "tweets"."created_at" DESC LIMIT 30 OFFSET 0  [["user_id", 2]]
+  Rendered shared/_feed_item.html.slim (0.8ms)
+  Rendered shared/_feed.html.slim (1.9ms)
+  Rendered users/show.html.slim within layouts/application (8.5ms)
+  Rendered layouts/_header.html.slim (0.5ms)
+  Rendered layouts/_footer.html.slim (0.0ms)
+Completed 200 OK in 27ms (Views: 24.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/tweets" for 127.0.0.1 at 2016-06-07 11:58:52 +0600
+Processing by TweetsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1[0m  [["remember_token", "17c6001986cc48d264f13ec4092c39d230d26d74"]]
+  Rendered shared/_follow_form.html.slim (0.0ms)
+  Rendered shared/_profile.html.slim (0.8ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "tweets" WHERE "tweets"."user_id" = $1  [["user_id", 2]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = $1[0m  [["follower_id", 2]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = $1  [["followed_id", 2]]
+  Rendered shared/_stats.html.slim (3.1ms)
+  Rendered shared/_error_messages.html.slim (0.0ms)
+  Rendered shared/_tweet_form.html.slim (0.9ms)
+  Rendered shared/_user_info.html.slim (6.0ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "tweets"[0m
+  [1m[35mTweet Load (0.2ms)[0m  SELECT  "tweets".* FROM "tweets"  ORDER BY "tweets"."created_at" DESC LIMIT 30 OFFSET 0
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered shared/_feed_item.html.slim (6.4ms)
+  Rendered shared/_feed.html.slim (7.9ms)
+  Rendered static_pages/home.html.slim within layouts/application (14.7ms)
+  Rendered layouts/_header.html.slim (0.3ms)
+  Rendered layouts/_footer.html.slim (0.0ms)
+Completed 200 OK in 34ms (Views: 30.1ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-06-07 12:05:51 +0600
+Processing by StaticPagesController#home as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1[0m  [["remember_token", "227c9cfbf361819348a26e70ce56323b8c8ef179"]]
+  Rendered shared/_follow_form.html.slim (0.0ms)
+  Rendered shared/_profile.html.slim (0.6ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "tweets" WHERE "tweets"."user_id" = $1  [["user_id", 1]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = $1[0m  [["follower_id", 1]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = $1  [["followed_id", 1]]
+  Rendered shared/_stats.html.slim (2.5ms)
+  Rendered shared/_error_messages.html.slim (0.0ms)
+  Rendered shared/_tweet_form.html.slim (0.7ms)
+  Rendered shared/_user_info.html.slim (4.8ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "tweets" WHERE ("tweets"."user_id" IN (SELECT "relationships"."followed_id" FROM "relationships" WHERE "relationships"."follower_id" = 1) OR "tweets"."user_id" = 1)[0m
+  [1m[35mTweet Load (0.3ms)[0m  SELECT  "tweets".* FROM "tweets" WHERE ("tweets"."user_id" IN (SELECT "relationships"."followed_id" FROM "relationships" WHERE "relationships"."follower_id" = 1) OR "tweets"."user_id" = 1)  ORDER BY "tweets"."created_at" DESC LIMIT 30 OFFSET 0
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered shared/_feed_item.html.slim (5.8ms)
+  Rendered shared/_feed.html.slim (7.6ms)
+  Rendered static_pages/home.html.slim within layouts/application (13.1ms)
+  Rendered layouts/_header.html.slim (0.4ms)
+  Rendered layouts/_footer.html.slim (0.0ms)
+Completed 200 OK in 41ms (Views: 37.5ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2016-06-07 12:06:02 +0600
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.slim within layouts/application (0.9ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1  [["remember_token", "227c9cfbf361819348a26e70ce56323b8c8ef179"]]
+  Rendered layouts/_header.html.slim (0.9ms)
+  Rendered layouts/_footer.html.slim (0.1ms)
+Completed 200 OK in 15ms (Views: 14.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/shoeab" for 127.0.0.1 at 2016-06-07 12:06:04 +0600
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"shoeab"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."slug" = $1 LIMIT 1[0m  [["slug", "shoeab"]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1  [["remember_token", "227c9cfbf361819348a26e70ce56323b8c8ef179"]]
+  Rendered shared/_follow_form.html.slim (0.0ms)
+  Rendered shared/_profile.html.slim (0.5ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "tweets" WHERE "tweets"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = $1  [["follower_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = $1[0m  [["followed_id", 1]]
+  Rendered shared/_stats.html.slim (2.3ms)
+  Rendered shared/_error_messages.html.slim (0.0ms)
+  Rendered shared/_tweet_form.html.slim (0.8ms)
+  [1m[35mTweet Exists (0.1ms)[0m  SELECT  1 AS one FROM "tweets" WHERE "tweets"."user_id" = $1 LIMIT 1  [["user_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "tweets" WHERE "tweets"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35mTweet Load (0.1ms)[0m  SELECT  "tweets".* FROM "tweets" WHERE "tweets"."user_id" = $1  ORDER BY "tweets"."created_at" DESC LIMIT 30 OFFSET 0  [["user_id", 1]]
+  Rendered shared/_feed_item.html.slim (0.9ms)
+  Rendered shared/_feed.html.slim (2.1ms)
+  Rendered users/show.html.slim within layouts/application (7.6ms)
+  Rendered layouts/_header.html.slim (0.4ms)
+  Rendered layouts/_footer.html.slim (0.1ms)
+Completed 200 OK in 26ms (Views: 22.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/tweets" for 127.0.0.1 at 2016-06-07 12:06:12 +0600
+Processing by TweetsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1[0m  [["remember_token", "227c9cfbf361819348a26e70ce56323b8c8ef179"]]
+  Rendered shared/_follow_form.html.slim (0.0ms)
+  Rendered shared/_profile.html.slim (0.6ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "tweets" WHERE "tweets"."user_id" = $1  [["user_id", 1]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = $1[0m  [["follower_id", 1]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = $1  [["followed_id", 1]]
+  Rendered shared/_stats.html.slim (2.5ms)
+  Rendered shared/_error_messages.html.slim (0.0ms)
+  Rendered shared/_tweet_form.html.slim (0.7ms)
+  Rendered shared/_user_info.html.slim (4.8ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "tweets"[0m
+  [1m[35mTweet Load (0.2ms)[0m  SELECT  "tweets".* FROM "tweets"  ORDER BY "tweets"."created_at" DESC LIMIT 30 OFFSET 0
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered shared/_feed_item.html.slim (5.5ms)
+  Rendered shared/_feed.html.slim (6.9ms)
+  Rendered static_pages/home.html.slim within layouts/application (12.4ms)
+  Rendered layouts/_header.html.slim (0.4ms)
+  Rendered layouts/_footer.html.slim (0.1ms)
+Completed 200 OK in 35ms (Views: 31.5ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/users/Jack" for 127.0.0.1 at 2016-06-07 12:23:23 +0600
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"Jack"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."slug" = $1 LIMIT 1[0m  [["slug", "Jack"]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1  [["remember_token", "227c9cfbf361819348a26e70ce56323b8c8ef179"]]
+  [1m[36mRelationship Load (0.2ms)[0m  [1mSELECT  "relationships".* FROM "relationships" WHERE "relationships"."follower_id" = $1 AND "relationships"."followed_id" = $2 LIMIT 1[0m  [["follower_id", 1], ["followed_id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "relationships".* FROM "relationships" WHERE "relationships"."follower_id" = $1 AND "relationships"."followed_id" = $2 LIMIT 1  [["follower_id", 1], ["followed_id", 2]]
+  Rendered shared/_unfollow.html.slim (0.9ms)
+  Rendered shared/_follow_form.html.slim (2.9ms)
+  Rendered shared/_profile.html.slim (3.7ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "tweets" WHERE "tweets"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = $1  [["follower_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = $1[0m  [["followed_id", 2]]
+  Rendered shared/_stats.html.slim (2.8ms)
+  [1m[35mTweet Exists (0.1ms)[0m  SELECT  1 AS one FROM "tweets" WHERE "tweets"."user_id" = $1 LIMIT 1  [["user_id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "tweets" WHERE "tweets"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[35mTweet Load (0.1ms)[0m  SELECT  "tweets".* FROM "tweets" WHERE "tweets"."user_id" = $1  ORDER BY "tweets"."created_at" DESC LIMIT 30 OFFSET 0  [["user_id", 2]]
+  Rendered shared/_feed_item.html.slim (0.7ms)
+  Rendered shared/_feed.html.slim (2.1ms)
+  Rendered users/show.html.slim within layouts/application (10.4ms)
+  Rendered layouts/_header.html.slim (0.4ms)
+  Rendered layouts/_footer.html.slim (0.0ms)
+Completed 200 OK in 27ms (Views: 24.1ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-06-07 12:37:32 +0600
+Processing by StaticPagesController#home as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1[0m  [["remember_token", "227c9cfbf361819348a26e70ce56323b8c8ef179"]]
+  Rendered shared/_follow_form.html.slim (0.0ms)
+  Rendered shared/_profile.html.slim (0.5ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "tweets" WHERE "tweets"."user_id" = $1  [["user_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = $1[0m  [["follower_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = $1  [["followed_id", 1]]
+  Rendered shared/_stats.html.slim (2.2ms)
+  Rendered shared/_error_messages.html.slim (0.0ms)
+  Rendered shared/_tweet_form.html.slim (0.6ms)
+  Rendered shared/_user_info.html.slim (4.2ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "tweets" WHERE ("tweets"."user_id" IN (SELECT "relationships"."followed_id" FROM "relationships" WHERE "relationships"."follower_id" = 1) OR "tweets"."user_id" = 1)[0m
+  [1m[35mTweet Load (0.2ms)[0m  SELECT  "tweets".* FROM "tweets" WHERE ("tweets"."user_id" IN (SELECT "relationships"."followed_id" FROM "relationships" WHERE "relationships"."follower_id" = 1) OR "tweets"."user_id" = 1)  ORDER BY "tweets"."created_at" DESC LIMIT 30 OFFSET 0
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered shared/_feed_item.html.slim (4.9ms)
+  Rendered shared/_feed.html.slim (6.6ms)
+  Rendered static_pages/home.html.slim within layouts/application (11.4ms)
+  Rendered layouts/_header.html.slim (0.3ms)
+  Rendered layouts/_footer.html.slim (0.1ms)
+Completed 200 OK in 27ms (Views: 23.8ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/tweets" for 127.0.0.1 at 2016-06-07 12:37:37 +0600
+Processing by TweetsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1[0m  [["remember_token", "227c9cfbf361819348a26e70ce56323b8c8ef179"]]
+  Rendered shared/_follow_form.html.slim (0.0ms)
+  Rendered shared/_profile.html.slim (0.6ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "tweets" WHERE "tweets"."user_id" = $1  [["user_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = $1[0m  [["follower_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = $1  [["followed_id", 1]]
+  Rendered shared/_stats.html.slim (2.6ms)
+  Rendered shared/_error_messages.html.slim (0.0ms)
+  Rendered shared/_tweet_form.html.slim (0.8ms)
+  Rendered shared/_user_info.html.slim (4.9ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "tweets"[0m
+  [1m[35mTweet Load (0.2ms)[0m  SELECT  "tweets".* FROM "tweets"  ORDER BY "tweets"."created_at" DESC LIMIT 30 OFFSET 0
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered shared/_feed_item.html.slim (5.6ms)
+  Rendered shared/_feed.html.slim (7.4ms)
+  Rendered static_pages/home.html.slim within layouts/application (13.0ms)
+  Rendered layouts/_header.html.slim (0.4ms)
+  Rendered layouts/_footer.html.slim (0.0ms)
+Completed 200 OK in 29ms (Views: 25.8ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-06-07 12:37:39 +0600
+Processing by StaticPagesController#home as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 LIMIT 1[0m  [["remember_token", "227c9cfbf361819348a26e70ce56323b8c8ef179"]]
+  Rendered shared/_follow_form.html.slim (0.0ms)
+  Rendered shared/_profile.html.slim (1.0ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "tweets" WHERE "tweets"."user_id" = $1  [["user_id", 1]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = $1[0m  [["follower_id", 1]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = $1  [["followed_id", 1]]
+  Rendered shared/_stats.html.slim (3.6ms)
+  Rendered shared/_error_messages.html.slim (0.0ms)
+  Rendered shared/_tweet_form.html.slim (0.9ms)
+  Rendered shared/_user_info.html.slim (6.7ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "tweets" WHERE ("tweets"."user_id" IN (SELECT "relationships"."followed_id" FROM "relationships" WHERE "relationships"."follower_id" = 1) OR "tweets"."user_id" = 1)[0m
+  [1m[35mTweet Load (0.3ms)[0m  SELECT  "tweets".* FROM "tweets" WHERE ("tweets"."user_id" IN (SELECT "relationships"."followed_id" FROM "relationships" WHERE "relationships"."follower_id" = 1) OR "tweets"."user_id" = 1)  ORDER BY "tweets"."created_at" DESC LIMIT 30 OFFSET 0
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered shared/_feed_item.html.slim (5.5ms)
+  Rendered shared/_feed.html.slim (7.6ms)
+  Rendered static_pages/home.html.slim within layouts/application (15.0ms)
+  Rendered layouts/_header.html.slim (0.4ms)
+  Rendered layouts/_footer.html.slim (0.1ms)
+Completed 200 OK in 32ms (Views: 28.9ms | ActiveRecord: 1.7ms)
