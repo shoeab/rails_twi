@@ -30,7 +30,7 @@ class UsersController < ApplicationController
     if @user.save
       sign_in @user
       flash[:success] = "Welcome to Twitter Clone!"
-      redirect_to @user
+      
     else
       render :new
     end
@@ -38,12 +38,19 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /users/1
   def update
-    if @user.update(user_params)
-      flash[:success] = "Update your profile"
-      redirect_to @user
-    else
-      render :edit
-    end
+		
+		uploaded_io = params[:user][:picture]
+		params[:user][:picture] = uploaded_io.original_filename
+		if @user.update(user_params)
+		  flash[:success] = "Update your profile"
+		  File.open(Rails.root.join('public', 'uploads', uploaded_io.original_filename), 'wb') do |file|
+			file.write(uploaded_io.read)
+			redirect_to @user
+		  end
+		  
+		else
+		  render :edit
+		end
   end
 
   # DELETE /users/1
@@ -72,7 +79,7 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation, :slug)
+      params.require(:user).permit(:name, :email, :password, :picture, :password_confirmation, :slug)
     end
 
     def correct_user

@@ -9,6 +9,7 @@
       .timeline
         h2.title Tweets
         = render 'shared/feed'
+		= @user.picture
 
   - else
     - provide(:title, 'Welcome')

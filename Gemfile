@@ -29,6 +29,8 @@ gem 'font-awesome-sass', '~> 4.3'
 
 gem 'pg'
 
+gem 'tzinfo-data'
+
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
